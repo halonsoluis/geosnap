@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B52D6682C791F02005365E2 /* geosnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6672C791F02005365E2 /* geosnapApp.swift */; };
+		5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6692C791F02005365E2 /* ContentView.swift */; };
+		5B52D66C2C791F02005365E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* Item.swift */; };
+		5B52D66E2C791F04005365E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D66D2C791F04005365E2 /* Assets.xcassets */; };
+		5B52D6712C791F04005365E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D6702C791F04005365E2 /* Preview Assets.xcassets */; };
+		5B52D67B2C791F04005365E2 /* geosnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D67A2C791F04005365E2 /* geosnapTests.swift */; };
+		5B52D6852C791F04005365E2 /* geosnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6842C791F04005365E2 /* geosnapUITests.swift */; };
+		5B52D6872C791F04005365E2 /* geosnapUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6862C791F04005365E2 /* geosnapUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B52D6772C791F04005365E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B52D65C2C791F02005365E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B52D6632C791F02005365E2;
+			remoteInfo = geosnap;
+		};
+		5B52D6812C791F04005365E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B52D65C2C791F02005365E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B52D6632C791F02005365E2;
+			remoteInfo = geosnap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5B52D6642C791F02005365E2 /* geosnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geosnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B52D6672C791F02005365E2 /* geosnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapApp.swift; sourceTree = "<group>"; };
+		5B52D6692C791F02005365E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5B52D66B2C791F02005365E2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5B52D66D2C791F04005365E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B52D6702C791F04005365E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5B52D6762C791F04005365E2 /* geosnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geosnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B52D67A2C791F04005365E2 /* geosnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapTests.swift; sourceTree = "<group>"; };
+		5B52D6802C791F04005365E2 /* geosnapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geosnapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B52D6842C791F04005365E2 /* geosnapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapUITests.swift; sourceTree = "<group>"; };
+		5B52D6862C791F04005365E2 /* geosnapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5B52D6612C791F02005365E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B52D6732C791F04005365E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B52D67D2C791F04005365E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B52D65B2C791F02005365E2 = {
+			isa = PBXGroup;
+			children = (
+				5B52D6662C791F02005365E2 /* geosnap */,
+				5B52D6792C791F04005365E2 /* geosnapTests */,
+				5B52D6832C791F04005365E2 /* geosnapUITests */,
+				5B52D6652C791F02005365E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5B52D6652C791F02005365E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D6642C791F02005365E2 /* geosnap.app */,
+				5B52D6762C791F04005365E2 /* geosnapTests.xctest */,
+				5B52D6802C791F04005365E2 /* geosnapUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B52D6662C791F02005365E2 /* geosnap */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D6672C791F02005365E2 /* geosnapApp.swift */,
+				5B52D6692C791F02005365E2 /* ContentView.swift */,
+				5B52D66B2C791F02005365E2 /* Item.swift */,
+				5B52D66D2C791F04005365E2 /* Assets.xcassets */,
+				5B52D66F2C791F04005365E2 /* Preview Content */,
+			);
+			path = geosnap;
+			sourceTree = "<group>";
+		};
+		5B52D66F2C791F04005365E2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D6702C791F04005365E2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5B52D6792C791F04005365E2 /* geosnapTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D67A2C791F04005365E2 /* geosnapTests.swift */,
+			);
+			path = geosnapTests;
+			sourceTree = "<group>";
+		};
+		5B52D6832C791F04005365E2 /* geosnapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D6842C791F04005365E2 /* geosnapUITests.swift */,
+				5B52D6862C791F04005365E2 /* geosnapUITestsLaunchTests.swift */,
+			);
+			path = geosnapUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B52D6632C791F02005365E2 /* geosnap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B52D68A2C791F04005365E2 /* Build configuration list for PBXNativeTarget "geosnap" */;
+			buildPhases = (
+				5B52D6602C791F02005365E2 /* Sources */,
+				5B52D6612C791F02005365E2 /* Frameworks */,
+				5B52D6622C791F02005365E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = geosnap;
+			productName = geosnap;
+			productReference = 5B52D6642C791F02005365E2 /* geosnap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B52D6752C791F04005365E2 /* geosnapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B52D68D2C791F04005365E2 /* Build configuration list for PBXNativeTarget "geosnapTests" */;
+			buildPhases = (
+				5B52D6722C791F04005365E2 /* Sources */,
+				5B52D6732C791F04005365E2 /* Frameworks */,
+				5B52D6742C791F04005365E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B52D6782C791F04005365E2 /* PBXTargetDependency */,
+			);
+			name = geosnapTests;
+			productName = geosnapTests;
+			productReference = 5B52D6762C791F04005365E2 /* geosnapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5B52D67F2C791F04005365E2 /* geosnapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B52D6902C791F04005365E2 /* Build configuration list for PBXNativeTarget "geosnapUITests" */;
+			buildPhases = (
+				5B52D67C2C791F04005365E2 /* Sources */,
+				5B52D67D2C791F04005365E2 /* Frameworks */,
+				5B52D67E2C791F04005365E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B52D6822C791F04005365E2 /* PBXTargetDependency */,
+			);
+			name = geosnapUITests;
+			productName = geosnapUITests;
+			productReference = 5B52D6802C791F04005365E2 /* geosnapUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B52D65C2C791F02005365E2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					5B52D6632C791F02005365E2 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					5B52D6752C791F04005365E2 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 5B52D6632C791F02005365E2;
+					};
+					5B52D67F2C791F04005365E2 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 5B52D6632C791F02005365E2;
+					};
+				};
+			};
+			buildConfigurationList = 5B52D65F2C791F02005365E2 /* Build configuration list for PBXProject "geosnap" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5B52D65B2C791F02005365E2;
+			productRefGroup = 5B52D6652C791F02005365E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B52D6632C791F02005365E2 /* geosnap */,
+				5B52D6752C791F04005365E2 /* geosnapTests */,
+				5B52D67F2C791F04005365E2 /* geosnapUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B52D6622C791F02005365E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B52D6712C791F04005365E2 /* Preview Assets.xcassets in Resources */,
+				5B52D66E2C791F04005365E2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B52D6742C791F04005365E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B52D67E2C791F04005365E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B52D6602C791F02005365E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */,
+				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
+				5B52D6682C791F02005365E2 /* geosnapApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B52D6722C791F04005365E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B52D67B2C791F04005365E2 /* geosnapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B52D67C2C791F04005365E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B52D6872C791F04005365E2 /* geosnapUITestsLaunchTests.swift in Sources */,
+				5B52D6852C791F04005365E2 /* geosnapUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B52D6782C791F04005365E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B52D6632C791F02005365E2 /* geosnap */;
+			targetProxy = 5B52D6772C791F04005365E2 /* PBXContainerItemProxy */;
+		};
+		5B52D6822C791F04005365E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B52D6632C791F02005365E2 /* geosnap */;
+			targetProxy = 5B52D6812C791F04005365E2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5B52D6882C791F04005365E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5B52D6892C791F04005365E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5B52D68B2C791F04005365E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"geosnap/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B52D68C2C791F04005365E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"geosnap/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5B52D68E2C791F04005365E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/geosnap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/geosnap";
+			};
+			name = Debug;
+		};
+		5B52D68F2C791F04005365E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/geosnap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/geosnap";
+			};
+			name = Release;
+		};
+		5B52D6912C791F04005365E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = geosnap;
+			};
+			name = Debug;
+		};
+		5B52D6922C791F04005365E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = geosnap;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B52D65F2C791F02005365E2 /* Build configuration list for PBXProject "geosnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B52D6882C791F04005365E2 /* Debug */,
+				5B52D6892C791F04005365E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B52D68A2C791F04005365E2 /* Build configuration list for PBXNativeTarget "geosnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B52D68B2C791F04005365E2 /* Debug */,
+				5B52D68C2C791F04005365E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B52D68D2C791F04005365E2 /* Build configuration list for PBXNativeTarget "geosnapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B52D68E2C791F04005365E2 /* Debug */,
+				5B52D68F2C791F04005365E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B52D6902C791F04005365E2 /* Build configuration list for PBXNativeTarget "geosnapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B52D6912C791F04005365E2 /* Debug */,
+				5B52D6922C791F04005365E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5B52D65C2C791F02005365E2 /* Project object */;
+}
