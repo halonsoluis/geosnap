@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B52D6682C791F02005365E2 /* geosnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6672C791F02005365E2 /* geosnapApp.swift */; };
+		5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6672C791F02005365E2 /* GeosnapApp.swift */; };
 		5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6692C791F02005365E2 /* ContentView.swift */; };
 		5B52D66C2C791F02005365E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* Item.swift */; };
 		5B52D66E2C791F04005365E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D66D2C791F04005365E2 /* Assets.xcassets */; };
@@ -36,7 +36,7 @@
 
 /* Begin PBXFileReference section */
 		5B52D6642C791F02005365E2 /* geosnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geosnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B52D6672C791F02005365E2 /* geosnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapApp.swift; sourceTree = "<group>"; };
+		5B52D6672C791F02005365E2 /* GeosnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeosnapApp.swift; sourceTree = "<group>"; };
 		5B52D6692C791F02005365E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5B52D66B2C791F02005365E2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5B52D66D2C791F04005365E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		5B52D6662C791F02005365E2 /* geosnap */ = {
 			isa = PBXGroup;
 			children = (
-				5B52D6672C791F02005365E2 /* geosnapApp.swift */,
+				5B52D6672C791F02005365E2 /* GeosnapApp.swift */,
 				5B52D6692C791F02005365E2 /* ContentView.swift */,
 				5B52D66B2C791F02005365E2 /* Item.swift */,
 				5B52D66D2C791F04005365E2 /* Assets.xcassets */,
@@ -262,7 +262,7 @@
 			files = (
 				5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */,
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
-				5B52D6682C791F02005365E2 /* geosnapApp.swift in Sources */,
+				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,9 +423,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"geosnap/Preview Content\"";
+				DEVELOPMENT_TEAM = RU5U8BC26T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -440,6 +442,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,9 +454,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"geosnap/Preview Content\"";
+				DEVELOPMENT_TEAM = RU5U8BC26T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -468,6 +473,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

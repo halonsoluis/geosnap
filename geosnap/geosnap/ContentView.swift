@@ -1,6 +1,3 @@
-// Created for geosnap in 2024
-// Using Swift 5.0
-
 import SwiftUI
 import SwiftData
 
@@ -8,46 +5,114 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
 
+    @State private var isWalkActive = false
+    @State private var timer: Timer?
+    @State private var seenItemIDs: Set<Int> = []
+
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationView {
+            ScrollView(.vertical) {
+                LazyVStack(alignment: .center, spacing: 10) {
+                    ForEach(items.sorted { $0.timestamp > $1.timestamp }, id: \.self) { item in
+                        ImageWithOverlay(item: item)
+                            .onAppear {
+                                if isNewItem(item) {
+                                    seenItemIDs.insert(item.id.hashValue)
+                                }
+                            }
                     }
                 }
-                .onDelete(perform: deleteItems)
+                .padding()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                    ToggleActivityButtonView(isWalkActive: $isWalkActive)
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button(action: {
+                        addItem()
+                    }) {
+                        Text("Add")
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
+            .onChange(of: isWalkActive) { _,_ in
+                if timer != nil {
+                    stopAddingItemsEverySecond()
+                } else {
+                    startAddingItemsEverySecond()
+                }
+            }
         }
+    }
+
+    struct ImageWithOverlay: View {
+        let item: Item
+
+        var body: some View {
+            Image(uiImage: UIImage(imageLiteralResourceName: "demo"))
+                .resizable()
+                .scaledToFit()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
+                .padding(6)
+                .background(Color.black.opacity(0.7))
+                .cornerRadius(10)
+                .overlay {
+                    Text(item.timestamp, format: .dateTime.hour().minute().second())
+                        .bold()
+                        .font(.title)
+                        .foregroundStyle(.white)
+                        .padding(6)
+                        .background(Color.black.opacity(0.6))
+                        .cornerRadius(5)
+                }
+                .shadow(radius: 5)
+        }
+    }
+
+    struct ToggleActivityButtonView: View {
+        @Binding var isWalkActive: Bool
+
+        var labelText: String {
+            isWalkActive ? "Stop" : "Start"
+        }
+
+        var body: some View {
+            Button(action: toggle, label: {
+                Text(labelText)
+                    .font(.headline)
+                    .padding()
+                    .background(isWalkActive ? Color.red : Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            })
+        }
+
+        private func toggle() {
+            isWalkActive.toggle()
+            print("\(labelText) Walk")
+        }
+    }
+
+    private func startAddingItemsEverySecond() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            addItem()
+        }
+    }
+
+    private func stopAddingItemsEverySecond() {
+        timer?.invalidate()
+        timer = nil
     }
 
     private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
+        let newItem = Item(timestamp: Date())
+        modelContext.insert(newItem)
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+    private func isNewItem(_ item: Item) -> Bool {
+        return !seenItemIDs.contains(item.id.hashValue)
     }
 }
 

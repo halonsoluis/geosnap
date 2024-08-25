@@ -5,7 +5,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct geosnapApp: App {
+struct GeosnapApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
