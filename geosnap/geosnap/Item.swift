@@ -7,8 +7,12 @@ import SwiftData
 @Model
 final class Item {
     var timestamp: Date
-    
-    init(timestamp: Date) {
+    var url: String
+    var image: Data
+
+    init(timestamp: Date, url: String, image: Data) {
         self.timestamp = timestamp
+        self.url = url
+        self.image = image
     }
 }

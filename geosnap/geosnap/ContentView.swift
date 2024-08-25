@@ -55,7 +55,7 @@ struct ContentView: View {
         @State private var popScale: CGFloat = 0.99
 
         var body: some View {
-            Image(uiImage: UIImage(imageLiteralResourceName: "demo"))
+            Image(uiImage: UIImage(data: item.image) ?? UIImage())
                 .resizable()
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)
@@ -120,7 +120,11 @@ struct ContentView: View {
     }
 
     private func addItem() {
-        let newItem = Item(timestamp: Date())
+        let newItem = Item(
+            timestamp: Date(),
+            url: "https://farm9.staticflickr.com/8608/16250914286_35e6795da4.jpg",
+            image: UIImage(imageLiteralResourceName: "demo").pngData()!
+        )
         modelContext.insert(newItem)
     }
 
