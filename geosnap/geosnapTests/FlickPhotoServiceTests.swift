@@ -21,7 +21,12 @@ final class FlickPhotoServiceTests: XCTestCase {
     func testFetchPhoto() async throws {
         do {
             let photo = try await service.fetchPhoto(latitude: 50.889715, longitude: 5.316397)
-            XCTAssertFalse(photo.id.isEmpty)
+
+            guard let url = photo.url else {
+                XCTFail("url malformed")
+                return
+            }
+            print(url.absoluteString)
         } catch (let error as PhotoError) {
             let errorMessage: String
             switch error {

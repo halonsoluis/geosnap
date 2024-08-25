@@ -36,7 +36,7 @@ struct Photo: Decodable {
     let farm: Int
     //   let title: String
     //   let ispublic: Int
-    //  let isfriend: Int
+    //   let isfriend: Int
     //   let isfamily: Int
 }
 
