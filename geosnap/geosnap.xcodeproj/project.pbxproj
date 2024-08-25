@@ -15,6 +15,7 @@
 		5B52D67B2C791F04005365E2 /* FlickPhotoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */; };
 		5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */; };
 		5B83DE502C7B369C00DDB69F /* FlickrPhotoResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */; };
+		5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoServiceTests.swift; sourceTree = "<group>"; };
 		5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoService.swift; sourceTree = "<group>"; };
 		5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponseTests.swift; sourceTree = "<group>"; };
+		5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */,
+				5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
 				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,
 				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
+				5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
