@@ -9,13 +9,14 @@ import Foundation
 enum PhotoError: Error {
     case invalidURL
     case noData
+    case withFlickrError(FlickrFailResponse)
 }
 
 // MARK: - Flickr API Implementation
 struct FlickrPhotoService {
     private let apiKey = "6a704fa13e809d5b0e65010950af64d2"  //TODO: Change API key and keep this in a safe place as a secret
 
-    func fetchPhoto(latitude: Double, longitude: Double, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchPhoto(latitude: Double, longitude: Double, completion: @escaping (Result<Photo, Error>) -> Void) {
         var urlComponents = URLComponents(string: "https://www.flickr.com/services/rest/")!
 
         urlComponents.queryItems = [
@@ -50,7 +51,37 @@ struct FlickrPhotoService {
                 return
             }
 
-            completion(.success(data))
+            // Debug print for the received data
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("Received JSON String: \(jsonString)")
+            } else {
+                print("Failed to convert data to string")
+            }
+
+
+
+            do {
+                let flickrResponse = try JSONDecoder().decode(FlickrResponse.self, from: data)
+
+                guard flickrResponse.isOK else {
+                    let flickrResponse = try JSONDecoder().decode(FlickrFailResponse.self, from: data)
+                    completion(.failure(PhotoError.withFlickrError(flickrResponse)))
+                    return
+                }
+
+                let flickrGoodResponse = try JSONDecoder().decode(FlickrPhotoResponse.self, from: data)
+
+                guard let photo = flickrGoodResponse.photos.photo.first else {
+                    completion(.failure(PhotoError.noData))
+                    return
+                }
+
+                completion(.success(photo))
+
+
+            } catch (let parsingError) {
+                completion(.failure(parsingError))
+            }
         }
         task.resume()
     }

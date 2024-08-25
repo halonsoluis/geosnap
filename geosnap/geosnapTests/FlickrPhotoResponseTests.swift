@@ -31,7 +31,23 @@ final class FlickrPhotoResponseTests: XCTestCase {
     }
     """.data(using: .utf8)!
 
-    func testParsingWorks() throws {
+    let failMessage = """
+{"stat":"fail","code":100,"message":"Invalid API Key (Key has expired)"}
+""".data(using: .utf8)!
+
+    func testParsingGenericGoodResponseWorks() throws {
+        let flickrResponse = try JSONDecoder().decode(FlickrResponse.self, from: jsonData)
+
+        XCTAssertEqual(flickrResponse.stat, "ok")
+    }
+
+    func testParsingGenericBadResponseWorks() throws {
+        let flickrResponse = try JSONDecoder().decode(FlickrResponse.self, from: failMessage)
+
+        XCTAssertEqual(flickrResponse.stat, "fail")
+    }
+
+    func testParsingGoodResponseWorks() throws {
         let flickrResponse = try JSONDecoder().decode(FlickrPhotoResponse.self, from: jsonData)
 
         let photos = flickrResponse.photos.photo
@@ -42,6 +58,14 @@ final class FlickrPhotoResponseTests: XCTestCase {
         XCTAssertEqual(photos.first!.secret, "35e6795da4")
         XCTAssertEqual(photos.first!.server, "8608")
         XCTAssertEqual(photos.first!.farm, 9)
+
+    }
+
+    func testParsingBadResponseWorks() throws {
+        let flickrResponse = try JSONDecoder().decode(FlickrFailResponse.self, from: failMessage)
+
+        XCTAssertEqual(flickrResponse.code, 100)
+        XCTAssertEqual(flickrResponse.message, "Invalid API Key (Key has expired)")
 
     }
 

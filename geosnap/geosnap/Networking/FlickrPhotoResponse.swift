@@ -3,9 +3,21 @@
 
 import Foundation
 
+struct FlickrResponse: Decodable {
+    let stat: String
+
+    var isOK: Bool {
+        stat == "ok"
+    }
+}
+
 struct FlickrPhotoResponse: Decodable {
     let photos: Photos
-    //  let stat: String
+}
+
+struct FlickrFailResponse: Decodable {
+    let code: Int
+    let message: String
 }
 
 struct Photos: Decodable {
@@ -27,3 +39,5 @@ struct Photo: Decodable {
     //  let isfriend: Int
     //   let isfamily: Int
 }
+
+
