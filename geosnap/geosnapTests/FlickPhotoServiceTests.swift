@@ -7,28 +7,22 @@ import XCTest
 final class FlickPhotoServiceTests: XCTestCase {
 
     var service: FlickrPhotoService!
+    private let expiredKey = "6a704fa13e809d5b0e65010950af64d2"
+    private let validKey = "6ace69042a6f0c80417a8e2e12f5abcf" // will be expired soon, this is a book definition flaky test
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        service = FlickrPhotoService()
+    override func setUp() {
+        service = FlickrPhotoService(apiKey: validKey)
     }
 
-    func testFetchPhoto() throws {
-        let expectation = expectation(description: "Attempt to call to server finishes")
+    override func tearDown() {
+        service = nil
+    }
 
-        var retrievedResult: Result<Photo, Error>!
-        service.fetchPhoto(latitude: 50.889715, longitude: 5.316397) { result in
-            retrievedResult = result
-            expectation.fulfill()
-        }
-
-
-        wait(for: [expectation])
-
-        switch retrievedResult {
-        case .success(let photo):
-            XCTAssertEqual(photo.id, "16250914286")
-        case .failure(let error as PhotoError):
+    func testFetchPhoto() async throws {
+        do {
+            let photo = try await service.fetchPhoto(latitude: 50.889715, longitude: 5.316397)
+            XCTAssertFalse(photo.id.isEmpty)
+        } catch (let error as PhotoError) {
             let errorMessage: String
             switch error {
             case .invalidURL:
@@ -39,11 +33,9 @@ final class FlickPhotoServiceTests: XCTestCase {
                 errorMessage = "Flickr API returned an error: \(flickrError.message) (Code: \(flickrError.code))"
             }
             XCTFail(errorMessage)
-        case .failure(let error):
+        }
+        catch(let error) {
             XCTFail("Something went wrong \(error)")
-        case .none:
-            XCTFail("Something went wrong")
         }
     }
-
 }

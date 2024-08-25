@@ -58,7 +58,6 @@ final class FlickrPhotoResponseTests: XCTestCase {
         XCTAssertEqual(photos.first!.secret, "35e6795da4")
         XCTAssertEqual(photos.first!.server, "8608")
         XCTAssertEqual(photos.first!.farm, 9)
-
     }
 
     func testParsingBadResponseWorks() throws {
@@ -66,7 +65,5 @@ final class FlickrPhotoResponseTests: XCTestCase {
 
         XCTAssertEqual(flickrResponse.code, 100)
         XCTAssertEqual(flickrResponse.message, "Invalid API Key (Key has expired)")
-
     }
-
 }

@@ -14,9 +14,9 @@ enum PhotoError: Error {
 
 // MARK: - Flickr API Implementation
 struct FlickrPhotoService {
-    private let apiKey = "6a704fa13e809d5b0e65010950af64d2"  //TODO: Change API key and keep this in a safe place as a secret
+    var apiKey: String
 
-    func fetchPhoto(latitude: Double, longitude: Double, completion: @escaping (Result<Photo, Error>) -> Void) {
+    func fetchPhoto(latitude: Double, longitude: Double) async throws -> Photo {
         var urlComponents = URLComponents(string: "https://www.flickr.com/services/rest/")!
 
         urlComponents.queryItems = [
@@ -36,53 +36,40 @@ struct FlickrPhotoService {
         ]
 
         guard let url = urlComponents.url else {
-            completion(.failure(PhotoError.invalidURL))
-            return
+            throw PhotoError.invalidURL
         }
 
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
+        let (data, response) = try await URLSession.shared.data(from: url)
 
-            guard let data = data else {
-                completion(.failure(PhotoError.noData))
-                return
-            }
-
-            // Debug print for the received data
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("Received JSON String: \(jsonString)")
-            } else {
-                print("Failed to convert data to string")
-            }
-
-
-
-            do {
-                let flickrResponse = try JSONDecoder().decode(FlickrResponse.self, from: data)
-
-                guard flickrResponse.isOK else {
-                    let flickrResponse = try JSONDecoder().decode(FlickrFailResponse.self, from: data)
-                    completion(.failure(PhotoError.withFlickrError(flickrResponse)))
-                    return
-                }
-
-                let flickrGoodResponse = try JSONDecoder().decode(FlickrPhotoResponse.self, from: data)
-
-                guard let photo = flickrGoodResponse.photos.photo.first else {
-                    completion(.failure(PhotoError.noData))
-                    return
-                }
-
-                completion(.success(photo))
-
-
-            } catch (let parsingError) {
-                completion(.failure(parsingError))
-            }
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+            throw PhotoError.noData
         }
-        task.resume()
+
+        // Debug print for the received data
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("Received JSON String: \(jsonString)")
+        } else {
+            print("Failed to convert data to string")
+        }
+
+        do {
+            let flickrResponse = try JSONDecoder().decode(FlickrResponse.self, from: data)
+
+            guard flickrResponse.isOK else {
+                let flickrResponse = try JSONDecoder().decode(FlickrFailResponse.self, from: data)
+                throw PhotoError.withFlickrError(flickrResponse)
+            }
+
+            let flickrGoodResponse = try JSONDecoder().decode(FlickrPhotoResponse.self, from: data)
+
+            guard let photo = flickrGoodResponse.photos.photo.first else {
+                throw PhotoError.noData
+            }
+            
+            return photo
+
+        } catch (let parsingError) {
+            throw parsingError
+        }
     }
 }
