@@ -21,7 +21,7 @@ final class FlickPhotoServiceTests: XCTestCase {
         let expectation = expectation(description: "Attempt to call to server finishes")
 
         var retrievedResult: Result<Data, Error>!
-        service.fetchPhoto(latitude: 37.7749, longitude: -122.4194) { result in
+        service.fetchPhoto(latitude: 50.889715, longitude: 5.316397) { result in
             retrievedResult = result
             expectation.fulfill()
         }
@@ -36,13 +36,6 @@ final class FlickPhotoServiceTests: XCTestCase {
             XCTFail("Something went wrong \(error)")
         case .none:
             XCTFail("Something went wrong")
-        }
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
         }
     }
 
