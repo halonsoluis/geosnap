@@ -14,6 +14,7 @@
 		5B52D6712C791F04005365E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D6702C791F04005365E2 /* Preview Assets.xcassets */; };
 		5B52D67B2C791F04005365E2 /* FlickPhotoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */; };
 		5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */; };
+		5B83DE502C7B369C00DDB69F /* FlickrPhotoResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		5B52D6762C791F04005365E2 /* geosnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geosnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoServiceTests.swift; sourceTree = "<group>"; };
 		5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoService.swift; sourceTree = "<group>"; };
+		5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */,
+				5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */,
 			);
 			path = geosnapTests;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B83DE502C7B369C00DDB69F /* FlickrPhotoResponseTests.swift in Sources */,
 				5B52D67B2C791F04005365E2 /* FlickPhotoServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
