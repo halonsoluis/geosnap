@@ -17,7 +17,9 @@ struct ContentView: View {
                         ImageWithOverlay(item: item)
                             .onAppear {
                                 if isNewItem(item) {
-                                    seenItemIDs.insert(item.id.hashValue)
+                                    _ = withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
+                                        seenItemIDs.insert(item.id.hashValue)
+                                    }
                                 }
                             }
                     }
@@ -30,7 +32,9 @@ struct ContentView: View {
                 }
                 ToolbarItem {
                     Button(action: {
-                        addItem()
+                        withAnimation {
+                            addItem()
+                        }
                     }) {
                         Text("Add")
                     }
@@ -48,6 +52,7 @@ struct ContentView: View {
 
     struct ImageWithOverlay: View {
         let item: Item
+        @State private var popScale: CGFloat = 0.99
 
         var body: some View {
             Image(uiImage: UIImage(imageLiteralResourceName: "demo"))
@@ -68,6 +73,12 @@ struct ContentView: View {
                         .cornerRadius(5)
                 }
                 .shadow(radius: 5)
+                .scaleEffect(popScale)
+                .onAppear {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
+                        popScale = 1.0
+                    }
+                }
         }
     }
 
@@ -97,7 +108,9 @@ struct ContentView: View {
 
     private func startAddingItemsEverySecond() {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            addItem()
+            withAnimation(.easeInOut) {
+                addItem()
+            }
         }
     }
 
