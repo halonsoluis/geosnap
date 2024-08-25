@@ -12,9 +12,10 @@
 		5B52D66C2C791F02005365E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* Item.swift */; };
 		5B52D66E2C791F04005365E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D66D2C791F04005365E2 /* Assets.xcassets */; };
 		5B52D6712C791F04005365E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D6702C791F04005365E2 /* Preview Assets.xcassets */; };
-		5B52D67B2C791F04005365E2 /* geosnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D67A2C791F04005365E2 /* geosnapTests.swift */; };
+		5B52D67B2C791F04005365E2 /* FlickPhotoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */; };
 		5B52D6852C791F04005365E2 /* geosnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6842C791F04005365E2 /* geosnapUITests.swift */; };
 		5B52D6872C791F04005365E2 /* geosnapUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6862C791F04005365E2 /* geosnapUITestsLaunchTests.swift */; };
+		5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +43,11 @@
 		5B52D66D2C791F04005365E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B52D6702C791F04005365E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B52D6762C791F04005365E2 /* geosnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geosnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B52D67A2C791F04005365E2 /* geosnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapTests.swift; sourceTree = "<group>"; };
+		5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoServiceTests.swift; sourceTree = "<group>"; };
 		5B52D6802C791F04005365E2 /* geosnapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geosnapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B52D6842C791F04005365E2 /* geosnapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapUITests.swift; sourceTree = "<group>"; };
 		5B52D6862C791F04005365E2 /* geosnapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = geosnapUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		5B52D6662C791F02005365E2 /* geosnap */ = {
 			isa = PBXGroup;
 			children = (
+				5B83DE4C2C7B2E2D00DDB69F /* Networking */,
 				5B52D6672C791F02005365E2 /* GeosnapApp.swift */,
 				5B52D6692C791F02005365E2 /* ContentView.swift */,
 				5B52D66B2C791F02005365E2 /* Item.swift */,
@@ -116,7 +119,7 @@
 		5B52D6792C791F04005365E2 /* geosnapTests */ = {
 			isa = PBXGroup;
 			children = (
-				5B52D67A2C791F04005365E2 /* geosnapTests.swift */,
+				5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */,
 			);
 			path = geosnapTests;
 			sourceTree = "<group>";
@@ -128,6 +131,14 @@
 				5B52D6862C791F04005365E2 /* geosnapUITestsLaunchTests.swift */,
 			);
 			path = geosnapUITests;
+			sourceTree = "<group>";
+		};
+		5B83DE4C2C7B2E2D00DDB69F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 			files = (
 				5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */,
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
+				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,
 				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B52D67B2C791F04005365E2 /* geosnapTests.swift in Sources */,
+				5B52D67B2C791F04005365E2 /* FlickPhotoServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
