@@ -20,8 +20,8 @@ struct ImageStorage {
 
         let allItems = try allItems(context: context)
 
-        if allItems.contains(where: { $0.url == newItem.url && $0.timestamp == newItem.timestamp}) {
-            print("An image with the same URL & timestamp already exists. Skipping save.")
+        if allItems.contains(where: { $0.url == newItem.url || $0.timestamp == newItem.timestamp}) {
+            print("An image with the same URL || timestamp already exists. Skipping save.")
             return
         }
 
