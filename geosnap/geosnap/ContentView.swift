@@ -29,6 +29,10 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     ToggleActivityButtonView(isWalkActive: $isWalkActive)
                 }
+
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ClearButton()
+                }
             }
             .onChange(of: isWalkActive) { _,_ in
                 isWalkActive ? startWalk() : stopWalk()
@@ -42,6 +46,36 @@ struct ContentView: View {
         }
         _ = withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
             seenItemIDs.insert(item.id.hashValue)
+        }
+    }
+
+    struct ClearButton: View {
+        @Environment(\.modelContext) private var modelContext  // Access the SwiftData model context
+        @Query private var items: [Item] // This allows querying the current items
+
+        var body: some View {
+            Button(action: clean, label: {
+                Text("Clear")
+                    .font(.title)
+                    .padding()
+                    .foregroundColor(.primary)
+                    .cornerRadius(10)
+            })
+        }
+
+        private func clean() {
+            // Remove all items from the database
+            for item in items {
+                modelContext.delete(item)
+            }
+
+            do {
+                // Save the context after deletions
+                try modelContext.save()
+                print("All items removed from the database.")
+            } catch {
+                print("Failed to remove items: \(error.localizedDescription)")
+            }
         }
     }
 
