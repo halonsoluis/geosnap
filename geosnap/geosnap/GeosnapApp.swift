@@ -21,8 +21,14 @@ struct GeosnapApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                locationManager: LocationManager(
+                    photoService: FlickrPhotoService(apiKey: "6ace69042a6f0c80417a8e2e12f5abcf"),
+                    modelContext: sharedModelContainer.mainContext
+                )
+            )
         }
         .modelContainer(sharedModelContainer)
+
     }
 }

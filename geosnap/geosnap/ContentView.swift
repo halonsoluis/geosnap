@@ -9,8 +9,12 @@ struct ContentView: View {
     )) private var items: [Item]
 
     @State private var isWalkActive = false
-    @State private var timer: Timer?
     @State private var seenItemIDs: Set<Int> = []
+    private var locationManager: LocationManager
+
+    init(locationManager: LocationManager) {
+        self.locationManager = locationManager
+    }
 
     var body: some View {
         NavigationView {
@@ -33,22 +37,9 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     ToggleActivityButtonView(isWalkActive: $isWalkActive)
                 }
-                ToolbarItem {
-                    Button(action: {
-                        withAnimation {
-                            addItem()
-                        }
-                    }) {
-                        Text("Add")
-                    }
-                }
             }
             .onChange(of: isWalkActive) { _,_ in
-                if timer != nil {
-                    stopAddingItemsEverySecond()
-                } else {
-                    startAddingItemsEverySecond()
-                }
+                isWalkActive ? startWalk() : stopWalk()
             }
         }
     }
@@ -95,10 +86,10 @@ struct ContentView: View {
         var body: some View {
             Button(action: toggle, label: {
                 Text(labelText)
-                    .font(.headline)
+                    .font(.title)
                     .padding()
-                    .background(isWalkActive ? Color.red : Color.green)
-                    .foregroundColor(.white)
+                    //.background(isWalkActive ? Color.red : Color.green)
+                    .foregroundColor(.primary)
                     .cornerRadius(10)
             })
         }
@@ -109,38 +100,22 @@ struct ContentView: View {
         }
     }
 
-    private func startAddingItemsEverySecond() {
-        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
-            withAnimation(.easeInOut) {
-                addItem()
-            }
-        }
+    private func startWalk() {
+        locationManager.startTracking()
     }
 
-    private func stopAddingItemsEverySecond() {
-        timer?.invalidate()
-        timer = nil
+    private func stopWalk() {
+        locationManager.stopTracking()
     }
 
-    private func addItem() {
-        let url = "https://farm9.staticflickr.com/8608/16250914286_35e6795da4.jpg"
-        Task {
-            do {
-                try await ImageStorage
-                    .downloadAndSaveImage(
-                        from: url,
-                        context: modelContext
-                    )
-            }
-        }
-    }
 
     private func isNewItem(_ item: Item) -> Bool {
         return !seenItemIDs.contains(item.id.hashValue)
     }
 }
-
+/*
 #Preview {
-    ContentView()
+    ContentView(locationManager: LocationManager(photoService: FlickrPhotoService(apiKey: ""), modelContext: .mainContext))
         .modelContainer(for: Item.self, inMemory: true)
 }
+*/

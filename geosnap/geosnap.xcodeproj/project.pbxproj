@@ -18,6 +18,7 @@
 		5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */; };
 		5B83DE552C7BF3A200DDB69F /* Photo+URLResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */; };
 		5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */; };
+		5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE592C7C068800DDB69F /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponse.swift; sourceTree = "<group>"; };
 		5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+URLResolution.swift"; sourceTree = "<group>"; };
 		5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
+		5B83DE592C7C068800DDB69F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5B83DE5B2C7C0CC800DDB69F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 		5B52D6662C791F02005365E2 /* geosnap */ = {
 			isa = PBXGroup;
 			children = (
+				5B83DE5B2C7C0CC800DDB69F /* Info.plist */,
+				5B83DE582C7C067400DDB69F /* MotionHandling */,
 				5B83DE532C7BF36C00DDB69F /* DataHandling */,
 				5B83DE4C2C7B2E2D00DDB69F /* Networking */,
 				5B52D6672C791F02005365E2 /* GeosnapApp.swift */,
@@ -129,6 +134,14 @@
 				5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */,
 			);
 			path = DataHandling;
+			sourceTree = "<group>";
+		};
+		5B83DE582C7C067400DDB69F /* MotionHandling */ = {
+			isa = PBXGroup;
+			children = (
+				5B83DE592C7C068800DDB69F /* LocationManager.swift */,
+			);
+			path = MotionHandling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +248,7 @@
 				5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */,
 				5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */,
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
+				5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */,
 				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,
 				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
 				5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */,
@@ -392,6 +406,7 @@
 				DEVELOPMENT_TEAM = RU5U8BC26T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = geosnap/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -423,6 +438,7 @@
 				DEVELOPMENT_TEAM = RU5U8BC26T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = geosnap/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
