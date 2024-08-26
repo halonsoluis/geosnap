@@ -9,7 +9,7 @@ final class Item {
     @Attribute(.unique)
     var timestamp: Date
 
-    //@Attribute(.unique)
+    @Attribute(.unique)
     var url: String
     
     var image: Data

@@ -23,7 +23,7 @@ struct GeosnapApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(locationManager: locationManager)
+            MainView(locationManager: locationManager)
                 .onAppear {
                     locationManager.imageURL = addNewItem
                 }

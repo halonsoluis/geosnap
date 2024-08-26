@@ -1,13 +1,15 @@
 import SwiftUI
+import ActivityKit
 import SwiftData
 
-struct ContentView: View {
+struct MainView: View {
     @Environment(\.modelContext) private var modelContext
 
     @Query(FetchDescriptor<Item>(
         sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
     )) private var items: [Item]
 
+    @StateObject private var locationLifeActivityManager = WalkingTracker()
     @State private var isWalkActive = false
     @State private var seenItemIDs: Set<Int> = []
 
@@ -137,10 +139,12 @@ struct ContentView: View {
 
     private func startWalk() {
         locationManager.startTracking()
+        locationLifeActivityManager.startTracking()
     }
 
     private func stopWalk() {
         locationManager.stopTracking()
+        locationLifeActivityManager.stopTracking()
     }
 
 
@@ -160,6 +164,6 @@ struct MockLocationManager: LocationTracking {
 }
 
 #Preview {
-    ContentView(locationManager: MockLocationManager())
+    MainView(locationManager: MockLocationManager())
         .modelContainer(for: Item.self, inMemory: true)
 }

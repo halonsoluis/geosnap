@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B09F1932C7CD4C40044BD8C /* WalkingTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1922C7CD4C40044BD8C /* WalkingTracker.swift */; };
+		5B09F19B2C7CDF540044BD8C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B09F19A2C7CDF540044BD8C /* WidgetKit.framework */; };
+		5B09F19D2C7CDF540044BD8C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B09F19C2C7CDF540044BD8C /* SwiftUI.framework */; };
+		5B09F1A02C7CDF540044BD8C /* LiveActivityWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F19F2C7CDF540044BD8C /* LiveActivityWidgetBundle.swift */; };
+		5B09F1A42C7CDF540044BD8C /* LiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1A32C7CDF540044BD8C /* LiveActivityWidget.swift */; };
+		5B09F1A82C7CDF560044BD8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B09F1A72C7CDF560044BD8C /* Assets.xcassets */; };
+		5B09F1AC2C7CDF560044BD8C /* LiveActivityWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5B09F1982C7CDF540044BD8C /* LiveActivityWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5B09F1B12C7CDFE10044BD8C /* WalkingActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F18F2C7CD2AB0044BD8C /* WalkingActivityView.swift */; };
+		5B09F1B42C7D159C0044BD8C /* WalkingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */; };
+		5B09F1B52C7D15A30044BD8C /* WalkingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */; };
 		5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6672C791F02005365E2 /* GeosnapApp.swift */; };
-		5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6692C791F02005365E2 /* ContentView.swift */; };
+		5B52D66A2C791F02005365E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6692C791F02005365E2 /* MainView.swift */; };
 		5B52D66C2C791F02005365E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* Item.swift */; };
 		5B52D66E2C791F04005365E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D66D2C791F04005365E2 /* Assets.xcassets */; };
 		5B52D6712C791F04005365E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D6702C791F04005365E2 /* Preview Assets.xcassets */; };
@@ -23,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5B09F1AA2C7CDF560044BD8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B52D65C2C791F02005365E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B09F1972C7CDF540044BD8C;
+			remoteInfo = LiveActivityWidgetExtension;
+		};
 		5B52D6772C791F04005365E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5B52D65C2C791F02005365E2 /* Project object */;
@@ -32,10 +49,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5B09F1B02C7CDF560044BD8C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5B09F1AC2C7CDF560044BD8C /* LiveActivityWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5B09F18F2C7CD2AB0044BD8C /* WalkingActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingActivityView.swift; sourceTree = "<group>"; };
+		5B09F1922C7CD4C40044BD8C /* WalkingTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingTracker.swift; sourceTree = "<group>"; };
+		5B09F1982C7CDF540044BD8C /* LiveActivityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LiveActivityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B09F19A2C7CDF540044BD8C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5B09F19C2C7CDF540044BD8C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5B09F19F2C7CDF540044BD8C /* LiveActivityWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityWidgetBundle.swift; sourceTree = "<group>"; };
+		5B09F1A32C7CDF540044BD8C /* LiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityWidget.swift; sourceTree = "<group>"; };
+		5B09F1A72C7CDF560044BD8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B09F1A92C7CDF560044BD8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingActivityAttributes.swift; sourceTree = "<group>"; };
 		5B52D6642C791F02005365E2 /* geosnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geosnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B52D6672C791F02005365E2 /* GeosnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeosnapApp.swift; sourceTree = "<group>"; };
-		5B52D6692C791F02005365E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5B52D6692C791F02005365E2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5B52D66B2C791F02005365E2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5B52D66D2C791F04005365E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B52D6702C791F04005365E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -52,6 +93,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B09F1952C7CDF540044BD8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B09F19D2C7CDF540044BD8C /* SwiftUI.framework in Frameworks */,
+				5B09F19B2C7CDF540044BD8C /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B52D6612C791F02005365E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,11 +119,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B09F18E2C7CD26D0044BD8C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D6692C791F02005365E2 /* MainView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5B09F1912C7CD4B70044BD8C /* LifeActivity */ = {
+			isa = PBXGroup;
+			children = (
+				5B09F1922C7CD4C40044BD8C /* WalkingTracker.swift */,
+				5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */,
+			);
+			path = LifeActivity;
+			sourceTree = "<group>";
+		};
+		5B09F1992C7CDF540044BD8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B09F19A2C7CDF540044BD8C /* WidgetKit.framework */,
+				5B09F19C2C7CDF540044BD8C /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B09F19E2C7CDF540044BD8C /* LiveActivityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				5B09F18F2C7CD2AB0044BD8C /* WalkingActivityView.swift */,
+				5B09F19F2C7CDF540044BD8C /* LiveActivityWidgetBundle.swift */,
+				5B09F1A32C7CDF540044BD8C /* LiveActivityWidget.swift */,
+				5B09F1A72C7CDF560044BD8C /* Assets.xcassets */,
+				5B09F1A92C7CDF560044BD8C /* Info.plist */,
+			);
+			path = LiveActivityWidget;
+			sourceTree = "<group>";
+		};
 		5B52D65B2C791F02005365E2 = {
 			isa = PBXGroup;
 			children = (
 				5B52D6662C791F02005365E2 /* geosnap */,
 				5B52D6792C791F04005365E2 /* geosnapTests */,
+				5B09F19E2C7CDF540044BD8C /* LiveActivityWidget */,
+				5B09F1992C7CDF540044BD8C /* Frameworks */,
 				5B52D6652C791F02005365E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,6 +173,7 @@
 			children = (
 				5B52D6642C791F02005365E2 /* geosnap.app */,
 				5B52D6762C791F04005365E2 /* geosnapTests.xctest */,
+				5B09F1982C7CDF540044BD8C /* LiveActivityWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,13 +181,13 @@
 		5B52D6662C791F02005365E2 /* geosnap */ = {
 			isa = PBXGroup;
 			children = (
-				5B83DE5B2C7C0CC800DDB69F /* Info.plist */,
+				5B09F1912C7CD4B70044BD8C /* LifeActivity */,
+				5B09F18E2C7CD26D0044BD8C /* UI */,
 				5B83DE582C7C067400DDB69F /* MotionHandling */,
 				5B83DE532C7BF36C00DDB69F /* DataHandling */,
 				5B83DE4C2C7B2E2D00DDB69F /* Networking */,
+				5B83DE5B2C7C0CC800DDB69F /* Info.plist */,
 				5B52D6672C791F02005365E2 /* GeosnapApp.swift */,
-				5B52D6692C791F02005365E2 /* ContentView.swift */,
-				5B52D66B2C791F02005365E2 /* Item.swift */,
 				5B52D66D2C791F04005365E2 /* Assets.xcassets */,
 				5B52D66F2C791F04005365E2 /* Preview Content */,
 			);
@@ -132,6 +223,7 @@
 		5B83DE532C7BF36C00DDB69F /* DataHandling */ = {
 			isa = PBXGroup;
 			children = (
+				5B52D66B2C791F02005365E2 /* Item.swift */,
 				5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */,
 				5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */,
 			);
@@ -150,6 +242,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B09F1972C7CDF540044BD8C /* LiveActivityWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B09F1AD2C7CDF560044BD8C /* Build configuration list for PBXNativeTarget "LiveActivityWidgetExtension" */;
+			buildPhases = (
+				5B09F1942C7CDF540044BD8C /* Sources */,
+				5B09F1952C7CDF540044BD8C /* Frameworks */,
+				5B09F1962C7CDF540044BD8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveActivityWidgetExtension;
+			productName = LiveActivityWidgetExtension;
+			productReference = 5B09F1982C7CDF540044BD8C /* LiveActivityWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		5B52D6632C791F02005365E2 /* geosnap */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B52D68A2C791F04005365E2 /* Build configuration list for PBXNativeTarget "geosnap" */;
@@ -157,10 +266,12 @@
 				5B52D6602C791F02005365E2 /* Sources */,
 				5B52D6612C791F02005365E2 /* Frameworks */,
 				5B52D6622C791F02005365E2 /* Resources */,
+				5B09F1B02C7CDF560044BD8C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5B09F1AB2C7CDF560044BD8C /* PBXTargetDependency */,
 			);
 			name = geosnap;
 			productName = geosnap;
@@ -195,6 +306,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					5B09F1972C7CDF540044BD8C = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					5B52D6632C791F02005365E2 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -219,11 +333,20 @@
 			targets = (
 				5B52D6632C791F02005365E2 /* geosnap */,
 				5B52D6752C791F04005365E2 /* geosnapTests */,
+				5B09F1972C7CDF540044BD8C /* LiveActivityWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B09F1962C7CDF540044BD8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B09F1A82C7CDF560044BD8C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B52D6622C791F02005365E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,19 +366,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B09F1942C7CDF540044BD8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B09F1A02C7CDF540044BD8C /* LiveActivityWidgetBundle.swift in Sources */,
+				5B09F1A42C7CDF540044BD8C /* LiveActivityWidget.swift in Sources */,
+				5B09F1B12C7CDFE10044BD8C /* WalkingActivityView.swift in Sources */,
+				5B09F1B52C7D15A30044BD8C /* WalkingActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B52D6602C791F02005365E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5B83DE552C7BF3A200DDB69F /* Photo+URLResolution.swift in Sources */,
 				5B83DE5D2C7CBC6F00DDB69F /* LocationTracking.swift in Sources */,
+				5B09F1932C7CD4C40044BD8C /* WalkingTracker.swift in Sources */,
 				5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */,
-				5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */,
+				5B52D66A2C791F02005365E2 /* MainView.swift in Sources */,
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
 				5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */,
 				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,
 				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
 				5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */,
+				5B09F1B42C7D159C0044BD8C /* WalkingActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +407,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5B09F1AB2C7CDF560044BD8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B09F1972C7CDF540044BD8C /* LiveActivityWidgetExtension */;
+			targetProxy = 5B09F1AA2C7CDF560044BD8C /* PBXContainerItemProxy */;
+		};
 		5B52D6782C791F04005365E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5B52D6632C791F02005365E2 /* geosnap */;
@@ -279,6 +420,62 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5B09F1AE2C7CDF560044BD8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RU5U8BC26T;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveActivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LiveActivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnap.lifeActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B09F1AF2C7CDF560044BD8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RU5U8BC26T;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveActivityWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LiveActivityWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.halonso.geosnap.lifeActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5B52D6882C791F04005365E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -401,6 +598,7 @@
 		5B52D68B2C791F04005365E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -433,6 +631,7 @@
 		5B52D68C2C791F04005365E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -503,6 +702,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B09F1AD2C7CDF560044BD8C /* Build configuration list for PBXNativeTarget "LiveActivityWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B09F1AE2C7CDF560044BD8C /* Debug */,
+				5B09F1AF2C7CDF560044BD8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5B52D65F2C791F02005365E2 /* Build configuration list for PBXProject "geosnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
