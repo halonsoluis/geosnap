@@ -114,19 +114,35 @@ struct MainView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
                 .background(Color.black.opacity(0.7))
-                .cornerRadius(10)
+                .cornerRadius(15)
                 .overlay(alignment: .bottomTrailing) {
-                    Text(item.timestamp, format: .dateTime.hour().minute().second())
-                        .bold()
-                        .font(.title)
-                        .foregroundStyle(.white)
-                        .padding(6)
-                        .background(Color.black.opacity(0.6))
-                        .cornerRadius(10)
+                    // Add gradient overlay for better contrast
+                    LinearGradient(
+                        gradient: Gradient(
+                            colors: [.clear, .black.opacity(0.6)]
+                        ),
+                        startPoint: .center,
+                        endPoint: .bottom
+                    )
+                    .frame(height: 100)
+                    .cornerRadius(15)
+                    .overlay(
+                        Text(item.timestamp, format: .dateTime.hour().minute().second())
+                            .bold()
+                            .font(.title)
+                            .foregroundColor(.white)
+                            .padding(8)
+                            .background(Color.black.opacity(0.3))
+                            .cornerRadius(8)
+                            .shadow(radius: 3)
+                            .padding([.trailing, .bottom], 4),
+                        alignment: .bottomTrailing
+                    )
                 }
-                .shadow(radius: 8)
+                .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 6)
                 .scaleEffect(popScale)
                 .onAppear {
+                    // Smooth scaling animation
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
                         popScale = 1.0
                     }
