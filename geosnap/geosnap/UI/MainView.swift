@@ -51,11 +51,19 @@ struct MainView: View {
 
     private var emptyView: some View {
         VStack(alignment: .center) {
-            Image(systemName: "figure.walk")
+            Image(systemName: isWalkActive ? "figure.walk.departure" : "figure.stand")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150, height: 150)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
+
+            Text("Every 100 meters I'll attempt to gather a new photo for you.")
+                .bold()
+                .font(.caption2)
+                .foregroundColor(.primary)
+                .padding(8)
+                .cornerRadius(8)
+                .padding([.leading, .trailing, .bottom], 4)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -80,9 +88,9 @@ struct MainView: View {
         var body: some View {
             Button(action: clean, label: {
                 Text("Clear")
-                    .font(.title)
+                    .font(.title3)
                     .padding()
-                    .foregroundColor(.primary)
+                    .foregroundColor(.red)
                     .cornerRadius(10)
             })
         }
@@ -160,7 +168,7 @@ struct MainView: View {
         var body: some View {
             Button(action: toggle, label: {
                 Text(labelText)
-                    .font(.title)
+                    .font(.title3)
                     .padding()
                 //.background(isWalkActive ? Color.red : Color.green)
                     .foregroundColor(.primary)
