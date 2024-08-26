@@ -17,6 +17,7 @@
 		5B83DE502C7B369C00DDB69F /* FlickrPhotoResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */; };
 		5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */; };
 		5B83DE552C7BF3A200DDB69F /* Photo+URLResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */; };
+		5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponseTests.swift; sourceTree = "<group>"; };
 		5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponse.swift; sourceTree = "<group>"; };
 		5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+URLResolution.swift"; sourceTree = "<group>"; };
+		5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */,
+				5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */,
 			);
 			path = DataHandling;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B83DE552C7BF3A200DDB69F /* Photo+URLResolution.swift in Sources */,
+				5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */,
 				5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */,
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
 				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,

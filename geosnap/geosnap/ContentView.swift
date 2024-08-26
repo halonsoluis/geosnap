@@ -3,7 +3,10 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+
+    @Query(FetchDescriptor<Item>(
+        sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
+    )) private var items: [Item]
 
     @State private var isWalkActive = false
     @State private var timer: Timer?
@@ -13,7 +16,7 @@ struct ContentView: View {
         NavigationView {
             ScrollView(.vertical) {
                 LazyVStack(alignment: .center, spacing: 10) {
-                    ForEach(items.sorted { $0.timestamp > $1.timestamp }, id: \.self) { item in
+                    ForEach(items, id: \.self) { item in
                         ImageWithOverlay(item: item)
                             .onAppear {
                                 if isNewItem(item) {
@@ -101,13 +104,13 @@ struct ContentView: View {
         }
 
         private func toggle() {
-            isWalkActive.toggle()
             print("\(labelText) Walk")
+            isWalkActive.toggle()
         }
     }
 
     private func startAddingItemsEverySecond() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
             withAnimation(.easeInOut) {
                 addItem()
             }
@@ -120,12 +123,16 @@ struct ContentView: View {
     }
 
     private func addItem() {
-        let newItem = Item(
-            timestamp: Date(),
-            url: "https://farm9.staticflickr.com/8608/16250914286_35e6795da4.jpg",
-            image: UIImage(imageLiteralResourceName: "demo").pngData()!
-        )
-        modelContext.insert(newItem)
+        let url = "https://farm9.staticflickr.com/8608/16250914286_35e6795da4.jpg"
+        Task {
+            do {
+                try await ImageStorage
+                    .downloadAndSaveImage(
+                        from: url,
+                        context: modelContext
+                    )
+            }
+        }
     }
 
     private func isNewItem(_ item: Item) -> Bool {
