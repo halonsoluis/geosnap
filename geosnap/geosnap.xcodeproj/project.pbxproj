@@ -17,6 +17,7 @@
 		5B09F1B12C7CDFE10044BD8C /* WalkingActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F18F2C7CD2AB0044BD8C /* WalkingActivityView.swift */; };
 		5B09F1B42C7D159C0044BD8C /* WalkingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */; };
 		5B09F1B52C7D15A30044BD8C /* WalkingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */; };
+		5B09F1B72C7D342E0044BD8C /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B62C7D342E0044BD8C /* PhotoService.swift */; };
 		5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6672C791F02005365E2 /* GeosnapApp.swift */; };
 		5B52D66A2C791F02005365E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6692C791F02005365E2 /* MainView.swift */; };
 		5B52D66C2C791F02005365E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* Item.swift */; };
@@ -74,6 +75,7 @@
 		5B09F1A72C7CDF560044BD8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B09F1A92C7CDF560044BD8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingActivityAttributes.swift; sourceTree = "<group>"; };
+		5B09F1B62C7D342E0044BD8C /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		5B52D6642C791F02005365E2 /* geosnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geosnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B52D6672C791F02005365E2 /* GeosnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeosnapApp.swift; sourceTree = "<group>"; };
 		5B52D6692C791F02005365E2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			children = (
 				5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */,
 				5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */,
+				5B09F1B62C7D342E0044BD8C /* PhotoService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
 				5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */,
 				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,
+				5B09F1B72C7D342E0044BD8C /* PhotoService.swift in Sources */,
 				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
 				5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */,
 				5B09F1B42C7D159C0044BD8C /* WalkingActivityAttributes.swift in Sources */,

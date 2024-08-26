@@ -14,18 +14,25 @@ struct GeosnapApp: App {
         }
     }()
 
-    var locationManager: LocationManager
+    var locationManager: LocationTracking
+    var photoService: PhotoService
 
     init() {
-        let photoService = FlickrPhotoService(apiKey: "0006d738e8153f957da524a119c8bca0")
-        locationManager = LocationManager(photoService: photoService)
+        photoService = FlickrPhotoService(apiKey: "0006d738e8153f957da524a119c8bca0")
+        
+        let walkingTracker = WalkingTracker()
+        let locationManager = LocationManager(photoService: photoService)
+
+        self.locationManager = CompositionalLocationManager(
+            locationService: [walkingTracker, locationManager]
+        )
     }
 
     var body: some Scene {
         WindowGroup {
             MainView(locationManager: locationManager)
                 .onAppear {
-                    locationManager.imageURL = addNewItem
+                    photoService.imageURL = addNewItem
                 }
         }
         .modelContainer(sharedModelContainer)
@@ -41,5 +48,18 @@ struct GeosnapApp: App {
                 print("Failed to download and save image: \(error)")
             }
         }
+    }
+}
+
+private struct CompositionalLocationManager: LocationTracking {
+
+    let locationService: [LocationTracking]
+
+    func startTracking() {
+        locationService.forEach { $0.startTracking() }
+    }
+
+    func stopTracking() {
+        locationService.forEach { $0.stopTracking() }
     }
 }

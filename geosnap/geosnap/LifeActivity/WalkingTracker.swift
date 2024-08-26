@@ -36,7 +36,7 @@ class WalkingTracker: ObservableObject, LocationTracking {
         timer = nil
     }
 
-    func startWalkingActivity() {
+    private func startWalkingActivity() {
         let initialContentState = WalkingActivityAttributes.ContentState(distanceWalked: 0.0, elapsedTime: 0)
         let attributes = WalkingActivityAttributes()
 
@@ -53,7 +53,7 @@ class WalkingTracker: ObservableObject, LocationTracking {
         }
     }
 
-    func updateWalkingActivity() {
+    private func updateWalkingActivity() {
         guard let activity = activity else { return }
         let updatedContentState = ActivityContent(state: WalkingActivityAttributes.ContentState(distanceWalked: distanceWalked, elapsedTime: elapsedTime), staleDate: nil)
 
@@ -62,7 +62,7 @@ class WalkingTracker: ObservableObject, LocationTracking {
         }
     }
 
-    func stopWalkingActivity() {
+    private func stopWalkingActivity() {
         Task {
             await activity?.end(nil, dismissalPolicy: .immediate)
         }

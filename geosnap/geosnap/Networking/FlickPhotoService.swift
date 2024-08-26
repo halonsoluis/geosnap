@@ -13,10 +13,28 @@ enum PhotoError: Error {
 }
 
 // MARK: - Flickr API Implementation
-struct FlickrPhotoService {
-    var apiKey: String
+class FlickrPhotoService: PhotoService {
 
-    func fetchPhoto(latitude: Double, longitude: Double) async throws -> Photo {
+    var apiKey: String
+    var imageURL: ((String) -> Void)?
+
+    init(apiKey: String) {
+        self.apiKey = apiKey
+    }
+
+    func fetchPhoto(latitude: Double, longitude: Double) async throws {
+        let photo = try await fetchPhotoWithReturn(latitude: latitude, longitude: longitude)
+
+        guard let url = photo.url else {
+            print("Failed to create url")
+            return
+        }
+
+        imageURL?(url.absoluteString)
+    }
+
+
+    func fetchPhotoWithReturn(latitude: Double, longitude: Double) async throws -> Photo {
         var urlComponents = URLComponents(string: "https://www.flickr.com/services/rest/")!
 
         urlComponents.queryItems = [

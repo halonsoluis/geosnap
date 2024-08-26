@@ -10,16 +10,15 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
     private let distanceThreshold: Double = 100.0  // 100 meters
-    private let photoService: FlickrPhotoService
 
     private var lastLocation: CLLocation?
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
-    var imageURL: ((String) -> Void)?
+    var photoService: PhotoService
 
     private var activated = false
 
-    init(photoService: FlickrPhotoService) {
+    init(photoService: PhotoService) {
         self.photoService = photoService
         super.init()
         locationManager.delegate = self
@@ -58,14 +57,7 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
 
         Task {
             do {
-                let photo = try await photoService.fetchPhoto(latitude: latitude, longitude: longitude)
-
-                guard let url = photo.url else {
-                    print("Failed to create url")
-                    return
-                }
-
-                imageURL?(url.absoluteString)
+                try await photoService.fetchPhoto(latitude: latitude, longitude: longitude)
                 endBackgroundTask()
             } catch {
                 print("Failed to fetch photos: \(error)")

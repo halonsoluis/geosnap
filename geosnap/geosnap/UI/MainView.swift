@@ -9,7 +9,6 @@ struct MainView: View {
         sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
     )) private var items: [Item]
 
-    @StateObject private var locationLifeActivityManager = WalkingTracker()
     @State private var isWalkActive = false
     @State private var seenItemIDs: Set<Int> = []
 
@@ -139,12 +138,10 @@ struct MainView: View {
 
     private func startWalk() {
         locationManager.startTracking()
-        locationLifeActivityManager.startTracking()
     }
 
     private func stopWalk() {
         locationManager.stopTracking()
-        locationLifeActivityManager.stopTracking()
     }
 
 

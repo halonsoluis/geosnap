@@ -8,7 +8,7 @@ final class FlickPhotoServiceTests: XCTestCase {
 
     var service: FlickrPhotoService!
     private let expiredKey = "6a704fa13e809d5b0e65010950af64d2"
-    private let validKey = "6ace69042a6f0c80417a8e2e12f5abcf" // will be expired soon, this is a book definition flaky test
+    private let validKey = "0006d738e8153f957da524a119c8bca0" // will be expired soon, this is a book definition flaky test
 
     override func setUp() {
         service = FlickrPhotoService(apiKey: validKey)
@@ -20,7 +20,7 @@ final class FlickPhotoServiceTests: XCTestCase {
 
     func testFetchPhoto() async throws {
         do {
-            let photo = try await service.fetchPhoto(latitude: 50.889715, longitude: 5.316397)
+            let photo = try await service.fetchPhotoWithReturn(latitude: 50.889715, longitude: 5.316397)
 
             guard let url = photo.url else {
                 XCTFail("url malformed")
