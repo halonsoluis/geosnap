@@ -6,50 +6,25 @@ import CoreLocation
 import SwiftData
 import UIKit
 
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
     private let distanceThreshold: Double = 100.0  // 100 meters
     private let photoService: FlickrPhotoService
-    private let modelContext: ModelContext
 
     private var lastLocation: CLLocation?
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
+    var imageURL: ((String) -> Void)?
+
     private var activated = false
 
-    init(photoService: FlickrPhotoService, modelContext: ModelContext) {
+    init(photoService: FlickrPhotoService) {
         self.photoService = photoService
-        self.modelContext = modelContext
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = distanceThreshold
-
-    }
-
-    func startTracking() {
-        activated = true
-
-        if locationManager.authorizationStatus == .notDetermined {
-            locationManager.requestAlwaysAuthorization()
-        } else {
-            locationManager.allowsBackgroundLocationUpdates = true
-            locationManager.showsBackgroundLocationIndicator = true
-            locationManager.startUpdatingLocation()
-
-        }
-    }
-
-    func stopTracking() {
-        activated = false
-
-        locationManager.stopUpdatingLocation()
-        locationManager.showsBackgroundLocationIndicator = false
-        locationManager.allowsBackgroundLocationUpdates = false
-
-        endBackgroundTask()
-
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -89,7 +64,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                     print("Failed to create url")
                     return
                 }
-                addItem(url: url.absoluteString)
+
+                imageURL?(url.absoluteString)
                 endBackgroundTask()
             } catch {
                 print("Failed to fetch photos: \(error)")
@@ -99,33 +75,45 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
-    private func addItem(url: String) {
-        Task {
-            do {
-                try await ImageStorage
-                    .downloadAndSaveImage(
-                        from: url,
-                        context: modelContext
-                    )
+    // Begin a background task
+    private func beginBackgroundTask() {
+        if backgroundTask == .invalid {
+            backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "FetchPhotos") {
+                // Cleanup if the task times out
+                self.endBackgroundTask()
             }
         }
     }
 
-        // Begin a background task
-       private func beginBackgroundTask() {
-           if backgroundTask == .invalid {
-               backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "FetchPhotos") {
-                   // Cleanup if the task times out
-                   self.endBackgroundTask()
-               }
-           }
-       }
+    // End the background task
+    private func endBackgroundTask() {
+        if backgroundTask != .invalid {
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            backgroundTask = .invalid
+        }
+    }
 
-       // End the background task
-       private func endBackgroundTask() {
-           if backgroundTask != .invalid {
-               UIApplication.shared.endBackgroundTask(backgroundTask)
-               backgroundTask = .invalid
-           }
-       }
+    //MARK: - Location Tracking
+    func startTracking() {
+        activated = true
+        beginBackgroundTask()
+
+        if locationManager.authorizationStatus == .notDetermined {
+            locationManager.requestAlwaysAuthorization()
+        } else {
+            locationManager.allowsBackgroundLocationUpdates = true
+            locationManager.showsBackgroundLocationIndicator = true
+            locationManager.startUpdatingLocation()
+        }
+    }
+
+    func stopTracking() {
+        activated = false
+
+        locationManager.stopUpdatingLocation()
+        locationManager.showsBackgroundLocationIndicator = false
+        locationManager.allowsBackgroundLocationUpdates = false
+
+        endBackgroundTask()
+    }
 }

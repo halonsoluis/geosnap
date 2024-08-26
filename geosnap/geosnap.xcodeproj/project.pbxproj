@@ -19,6 +19,7 @@
 		5B83DE552C7BF3A200DDB69F /* Photo+URLResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */; };
 		5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */; };
 		5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE592C7C068800DDB69F /* LocationManager.swift */; };
+		5B83DE5D2C7CBC6F00DDB69F /* LocationTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE5C2C7CBC6F00DDB69F /* LocationTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		5B83DE592C7C068800DDB69F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5B83DE5B2C7C0CC800DDB69F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5B83DE5C2C7CBC6F00DDB69F /* LocationTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTracking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				5B83DE592C7C068800DDB69F /* LocationManager.swift */,
+				5B83DE5C2C7CBC6F00DDB69F /* LocationTracking.swift */,
 			);
 			path = MotionHandling;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B83DE552C7BF3A200DDB69F /* Photo+URLResolution.swift in Sources */,
+				5B83DE5D2C7CBC6F00DDB69F /* LocationTracking.swift in Sources */,
 				5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */,
 				5B52D66A2C791F02005365E2 /* ContentView.swift in Sources */,
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,

@@ -5,7 +5,7 @@ import Foundation
 import SwiftData
 
 struct ImageStorage {
-    static func downloadAndSaveImage(from urlString: String, context: ModelContext) async throws {
+    static func downloadAndCreateImageItem(from urlString: String) async throws -> Item {
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
@@ -13,10 +13,12 @@ struct ImageStorage {
         let (data, _) = try await URLSession.shared.data(from: url)
         let newItem = Item(timestamp: Date(), url: urlString, image: data)
 
-        var fetchDescriptor = FetchDescriptor<Item>()
-        fetchDescriptor.propertiesToFetch = [\.timestamp, \.url]
+        return newItem
+    }
 
-        let allItems = try context.fetch(fetchDescriptor)
+    static func saveImage(newItem: Item, context: ModelContext) throws {
+
+        let allItems = try allItems(context: context)
 
         if allItems.contains(where: { $0.url == newItem.url && $0.timestamp == newItem.timestamp}) {
             print("An image with the same URL & timestamp already exists. Skipping save.")
@@ -24,7 +26,15 @@ struct ImageStorage {
         }
 
         context.insert(newItem)
-        
+
         try context.save()
+    }
+
+    static private func allItems(context: ModelContext) throws -> [Item] {
+
+        var fetchDescriptor = FetchDescriptor<Item>()
+        fetchDescriptor.propertiesToFetch = [\.timestamp, \.url]
+
+        return try context.fetch(fetchDescriptor)
     }
 }

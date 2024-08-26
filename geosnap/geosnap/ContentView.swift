@@ -10,11 +10,9 @@ struct ContentView: View {
 
     @State private var isWalkActive = false
     @State private var seenItemIDs: Set<Int> = []
-    private var locationManager: LocationManager
 
-    init(locationManager: LocationManager) {
-        self.locationManager = locationManager
-    }
+    var locationManager: LocationTracking
+
 
     var body: some View {
         NavigationView {
@@ -22,13 +20,7 @@ struct ContentView: View {
                 LazyVStack(alignment: .center, spacing: 10) {
                     ForEach(items, id: \.self) { item in
                         ImageWithOverlay(item: item)
-                            .onAppear {
-                                if isNewItem(item) {
-                                    _ = withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
-                                        seenItemIDs.insert(item.id.hashValue)
-                                    }
-                                }
-                            }
+                            .onAppear(perform: { animatePopOfNewItems(item) })
                     }
                 }
                 .padding()
@@ -41,6 +33,15 @@ struct ContentView: View {
             .onChange(of: isWalkActive) { _,_ in
                 isWalkActive ? startWalk() : stopWalk()
             }
+        }
+    }
+
+    private func animatePopOfNewItems(_ item: Item) {
+        guard isNewItem(item) else {
+            return
+        }
+        _ = withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
+            seenItemIDs.insert(item.id.hashValue)
         }
     }
 
@@ -66,7 +67,7 @@ struct ContentView: View {
                         .background(Color.black.opacity(0.6))
                         .cornerRadius(5)
                 }
-                .shadow(radius: 5)
+                //.shadow(radius: 5)
                 .scaleEffect(popScale)
                 .onAppear {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
@@ -113,9 +114,18 @@ struct ContentView: View {
         return !seenItemIDs.contains(item.id.hashValue)
     }
 }
-/*
+
+struct MockLocationManager: LocationTracking {
+    func startTracking() {
+        print("Start tracking")
+    }
+
+    func stopTracking() {
+        print("Stop tracking")
+    }
+}
+
 #Preview {
-    ContentView(locationManager: LocationManager(photoService: FlickrPhotoService(apiKey: ""), modelContext: .mainContext))
+    ContentView(locationManager: MockLocationManager())
         .modelContainer(for: Item.self, inMemory: true)
 }
-*/
