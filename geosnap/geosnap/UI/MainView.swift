@@ -17,26 +17,49 @@ struct MainView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView(.vertical) {
-                LazyVStack(alignment: .center, spacing: 10) {
-                    ForEach(items, id: \.self) { item in
-                        ImageWithOverlay(item: item)
-                            .onAppear(perform: { animatePopOfNewItems(item) })
-                    }
-                }
-                .padding()
+            if items.isEmpty {
+                emptyView
+            } else {
+                listView
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    ToggleActivityButtonView(isWalkActive: $isWalkActive)
-                }
+        }.onChange(of: isWalkActive) { _,_ in
+            isWalkActive ? startWalk() : stopWalk()
+        }
+    }
 
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ClearButton()
+    private var listView: some View {
+        ScrollView(.vertical) {
+            LazyVStack(alignment: .center, spacing: 10) {
+                ForEach(items, id: \.self) { item in
+                    ImageWithOverlay(item: item)
+                        .onAppear(perform: { animatePopOfNewItems(item) })
                 }
             }
-            .onChange(of: isWalkActive) { _,_ in
-                isWalkActive ? startWalk() : stopWalk()
+            .padding()
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ToggleActivityButtonView(isWalkActive: $isWalkActive)
+            }
+
+            ToolbarItem(placement: .navigationBarLeading) {
+                ClearButton()
+            }
+        }
+
+    }
+
+    private var emptyView: some View {
+        VStack(alignment: .center) {
+            Image(systemName: "figure.walk")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 150, height: 150)
+                .foregroundColor(.black)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                ToggleActivityButtonView(isWalkActive: $isWalkActive)
             }
         }
     }
@@ -50,7 +73,7 @@ struct MainView: View {
         }
     }
 
-    struct ClearButton: View {
+    private struct ClearButton: View {
         @Environment(\.modelContext) private var modelContext  // Access the SwiftData model context
         @Query private var items: [Item] // This allows querying the current items
 
@@ -80,7 +103,7 @@ struct MainView: View {
         }
     }
 
-    struct ImageWithOverlay: View {
+    private struct ImageWithOverlay: View {
         let item: Item
         @State private var popScale: CGFloat = 0.99
 
@@ -90,19 +113,18 @@ struct MainView: View {
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
-                .padding(6)
                 .background(Color.black.opacity(0.7))
                 .cornerRadius(10)
-                .overlay {
+                .overlay(alignment: .bottomTrailing) {
                     Text(item.timestamp, format: .dateTime.hour().minute().second())
                         .bold()
                         .font(.title)
                         .foregroundStyle(.white)
                         .padding(6)
                         .background(Color.black.opacity(0.6))
-                        .cornerRadius(5)
+                        .cornerRadius(10)
                 }
-                //.shadow(radius: 5)
+                .shadow(radius: 8)
                 .scaleEffect(popScale)
                 .onAppear {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
@@ -112,7 +134,7 @@ struct MainView: View {
         }
     }
 
-    struct ToggleActivityButtonView: View {
+    private struct ToggleActivityButtonView: View {
         @Binding var isWalkActive: Bool
 
         var labelText: String {
@@ -124,7 +146,7 @@ struct MainView: View {
                 Text(labelText)
                     .font(.title)
                     .padding()
-                    //.background(isWalkActive ? Color.red : Color.green)
+                //.background(isWalkActive ? Color.red : Color.green)
                     .foregroundColor(.primary)
                     .cornerRadius(10)
             })
