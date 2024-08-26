@@ -51,11 +51,19 @@ struct MainView: View {
 
     private var emptyView: some View {
         VStack(alignment: .center) {
-            Image(systemName: "figure.walk")
+            Image(systemName: isWalkActive ? "figure.walk.departure" : "figure.stand")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150, height: 150)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
+
+            Text("Every 100 meters I'll attempt to gather a new photo for you.")
+                .bold()
+                .font(.caption2)
+                .foregroundColor(.primary)
+                .padding(8)
+                .cornerRadius(8)
+                .padding([.leading, .trailing, .bottom], 4)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -74,15 +82,15 @@ struct MainView: View {
     }
 
     private struct ClearButton: View {
-        @Environment(\.modelContext) private var modelContext  // Access the SwiftData model context
-        @Query private var items: [Item] // This allows querying the current items
+        @Environment(\.modelContext) private var modelContext
+        @Query private var items: [Item]
 
         var body: some View {
             Button(action: clean, label: {
                 Text("Clear")
-                    .font(.title)
+                    .font(.title3)
                     .padding()
-                    .foregroundColor(.primary)
+                    .foregroundColor(.red)
                     .cornerRadius(10)
             })
         }
@@ -127,7 +135,7 @@ struct MainView: View {
                     .frame(height: 100)
                     .cornerRadius(15)
                     .overlay(
-                        Text(item.timestamp, format: .dateTime.hour().minute().second())
+                        Text(formatDate(item.timestamp))
                             .bold()
                             .font(.title)
                             .foregroundColor(.white)
@@ -148,7 +156,15 @@ struct MainView: View {
                     }
                 }
         }
+
+        private func formatDate(_ date: Date) -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "d/M/yy h:mm a"
+            return formatter.string(from: date)
+        }
+
     }
+
 
     private struct ToggleActivityButtonView: View {
         @Binding var isWalkActive: Bool
@@ -160,7 +176,7 @@ struct MainView: View {
         var body: some View {
             Button(action: toggle, label: {
                 Text(labelText)
-                    .font(.title)
+                    .font(.title3)
                     .padding()
                 //.background(isWalkActive ? Color.red : Color.green)
                     .foregroundColor(.primary)
