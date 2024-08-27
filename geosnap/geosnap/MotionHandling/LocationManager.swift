@@ -41,7 +41,6 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
         if let lastLocation = lastLocation {
             let distance = newLocation.distance(from: lastLocation)
             if distance >= distanceThreshold {
-                beginBackgroundTask()
                 fetchPhotosForLocation(newLocation)
                 self.lastLocation = newLocation
             }
@@ -57,10 +56,12 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
 
         Task {
             do {
+                beginBackgroundTask()
                 try await photoService.fetchPhoto(latitude: latitude, longitude: longitude)
                 endBackgroundTask()
             } catch {
                 print("Failed to fetch photos: \(error)")
+                lastLocation = nil
                 endBackgroundTask()
             }
 
@@ -71,7 +72,6 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
     private func beginBackgroundTask() {
         if backgroundTask == .invalid {
             backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "FetchPhotos") {
-                // Cleanup if the task times out
                 self.endBackgroundTask()
             }
         }
@@ -88,7 +88,6 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
     //MARK: - Location Tracking
     func startTracking() {
         activated = true
-        beginBackgroundTask()
 
         if locationManager.authorizationStatus == .notDetermined {
             locationManager.requestAlwaysAuthorization()

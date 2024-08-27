@@ -13,8 +13,14 @@ struct MainView: View {
     @State private var seenItemIDs: Set<Int> = []
 
     var locationManager: LocationTracking
-    @ObservedObject var errorHandling: ErrorHandling
 
+    @ObservedObject var errorHandling: ErrorHandling
+    @State private var isShowingApiKeyPopover = false
+    @State private var newApiKey = ""
+    @State private var showingTextFieldOverlay = false
+    @FocusState private var isTextFieldFocused: Bool
+
+    @AppStorage("apiKey") private var apiKey: String = ""
 
     var body: some View {
         ZStack {
@@ -27,12 +33,32 @@ struct MainView: View {
 
             }.onChange(of: isWalkActive) { _,_ in
                 isWalkActive ? startWalk() : stopWalk()
+            }.onChange(of: errorHandling.shouldHandleInvalidKey) { oldValue, newValue in
+                if newValue {
+                    isWalkActive = false
+                }
+                isShowingApiKeyPopover = newValue
+            }.alert(isPresented: $isShowingApiKeyPopover) {
+                Alert(
+                    title: Text("Invalid API Key"),
+                    message: Text("Your current API key is not valid. Please enter a new one."),
+                    primaryButton: .default(Text("Enter")) {
+                        showingTextFieldOverlay = true
+                    },
+                    secondaryButton: .cancel() {
+                        errorHandling.shouldHandleInvalidKey = false
+                    }
+                )
             }
 
             if !errorHandling.errorMessage.isEmpty {
                 errorBannerView(message: errorHandling.errorMessage)
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .zIndex(1)
+            }
+
+            if showingTextFieldOverlay {
+                apiKeyInputOverlay
             }
         }
     }
@@ -140,6 +166,62 @@ struct MainView: View {
         .animation(.spring(), value: message)
     }
 
+    private var apiKeyInputOverlay: some View {
+        VStack {
+            Spacer()
+
+            VStack(spacing: 16) {
+                Text("Enter New API Key")
+                    .font(.headline)
+                    .padding()
+
+                TextField("New API Key", text: $newApiKey)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .padding()
+                    .focused($isTextFieldFocused)
+                    .onAppear {
+                        isTextFieldFocused = true
+                    }.onDisappear {
+                        isTextFieldFocused = false
+                    }
+
+
+                HStack(alignment: .center) {
+                    Button("Cancel") {
+                        showingTextFieldOverlay = false
+                    }
+                    .padding()
+                    .foregroundColor(.red)
+
+                    Spacer()
+
+                    Button("Save") {
+                        showingTextFieldOverlay = false
+                        handleNewApiKey()
+                    }
+                    .padding()
+                }
+            }
+            .padding()
+            .background(Color(UIColor.systemBackground))
+            .cornerRadius(12)
+            .shadow(radius: 10)
+            .padding()
+
+            Spacer()
+        }
+        .background(Color.black.opacity(0.4).edgesIgnoringSafeArea(.all))
+    }
+
+    private func handleNewApiKey() {
+        print("New API Key entered: \(newApiKey)")
+        errorHandling.apiKey = newApiKey
+        isShowingApiKeyPopover = false
+        apiKey = newApiKey
+    }
+
     private struct ImageWithOverlay: View {
         let item: Item
         @State private var popScale: CGFloat = 0.99
@@ -207,7 +289,6 @@ struct MainView: View {
                 Text(labelText)
                     .font(.title3)
                     .padding()
-                //.background(isWalkActive ? Color.red : Color.green)
                     .foregroundColor(.primary)
                     .cornerRadius(10)
             })

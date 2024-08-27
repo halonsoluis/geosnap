@@ -4,6 +4,9 @@ import SwiftData
 
 @main
 struct GeosnapApp: App {
+
+    @AppStorage("apiKey") private var apiKey: String = ""
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([Item.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -21,7 +24,6 @@ struct GeosnapApp: App {
     init() {
         let photoService = FlickrPhotoService()
         let errorHandling = ErrorHandlingPhotoService(primaryPhotoService: photoService)
-
         self.photoService = errorHandling
         self.errorHandling = errorHandling
 
@@ -38,6 +40,7 @@ struct GeosnapApp: App {
             MainView(locationManager: locationManager, errorHandling: errorHandling)
                 .onAppear {
                     photoService.imageURL = addNewItem
+                    photoService.apiKey = apiKey
                 }
         }
         .modelContainer(sharedModelContainer)
@@ -59,6 +62,8 @@ struct GeosnapApp: App {
 class ErrorHandling: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var shouldHandleInvalidKey = false
+
+    var apiKey: String?
 }
 
 private struct CompositionalLocationManager: LocationTracking {
@@ -90,24 +95,26 @@ private class ErrorHandlingPhotoService: ErrorHandling, PhotoService {
     @MainActor
     func fetchPhoto(latitude: Double, longitude: Double) async throws {
         do {
-            shouldHandleInvalidKey = false
+            primaryPhotoService.apiKey = apiKey
             try await primaryPhotoService.fetchPhoto(latitude: latitude, longitude: longitude)
+            
+            errorMessage = ""
+            shouldHandleInvalidKey = false
         } catch let error as PhotoError {
             switch error {
             case .invalidURL:
                 errorMessage = "Invalid URL"
-                throw error
             case .noData:
-                errorMessage = "No photos available for this place"
-                throw error
+                break
             case .withFlickrError(let flickrFailResponse) where flickrFailResponse.invalidAPIKey:
-                // invalid API Key
                 shouldHandleInvalidKey = true
-                errorMessage = flickrFailResponse.message
             case .withFlickrError(let flickrFailResponse):
                 errorMessage = flickrFailResponse.message
-                throw error
             }
+            throw error
+        } catch let error {
+            errorMessage = error.localizedDescription
+            throw error
         }
     }
 
