@@ -1,14 +1,7 @@
 # GeoSnap - Location-Based Photo Fetching Service
 
-<div style="display: flex; align-items: center;">
-  
-  <div style="flex: 6; padding-left: 0px; padding-right: 50px;">
-    <p>GeoSnap is a demo Swift app that dynamically fetches photos from the Flickr API based on the user’s real-time location. Leveraging Core Location and ActivityKit, the app tracks the user’s movement and retrieves new photos when they travel more than 100 meters.</p>
-  </div>
-  <div style="flex: 1; display: flex; align-items: right;">
-    <img src="images/appIcon.png" style="height: 100%;" />
-  </div>
-</div>
+| *GeoSnap is a demo Swift app that dynamically fetches photos from the Flickr API based on the user’s real-time location. Leveraging Core Location and ActivityKit, the app tracks the user’s movement and retrieves new photos when they travel more than 100 meters.* | <img src="images/appIcon.png" width="50%"/> |
+|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------:|
 
 ## Features
 
@@ -65,7 +58,7 @@ Here are some demonstrations of the app in action:
 
 <p align="center">
 <img src="images/RecordingWithOverlay.gif" width="44%"/>
-<video src="images/RecordingWithoutOverlay.mp4" width="44%"/>
+<video src="images/RecordingWithoutOverlay.mp4" width="44%"></video>
 </p>
 
 ## Code Architecture
