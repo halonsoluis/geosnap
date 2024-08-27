@@ -11,7 +11,7 @@ struct ListView: View {
         ScrollView(.vertical) {
             LazyVStack(alignment: .center, spacing: 10) {
                 ForEach(items, id: \.self) { item in
-                    ImageWithOverlay(item: item)
+                    ImageWithOverlay(item: item, withOverlay: false)
                         .onAppear {
                             animatePopOfNewItems(item)
                         }

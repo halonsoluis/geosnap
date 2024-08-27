@@ -5,6 +5,7 @@ import SwiftUI
 struct ImageWithOverlay: View {
     let item: StoredPhoto
     @State private var popScale: CGFloat = 0.99
+    var withOverlay: Bool
 
     var body: some View {
         Image(uiImage: UIImage(data: item.image) ?? UIImage())
@@ -16,27 +17,9 @@ struct ImageWithOverlay: View {
             .cornerRadius(15)
             .overlay(alignment: .bottomTrailing) {
                 // Add gradient overlay for better contrast
-                LinearGradient(
-                    gradient: Gradient(
-                        colors: [.clear, .black.opacity(0.6)]
-                    ),
-                    startPoint: .center,
-                    endPoint: .bottom
-                )
-                .frame(height: 100)
-                .cornerRadius(15)
-                .overlay(
-                    Text(formatDate(item.timestamp))
-                        .bold()
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .padding(8)
-                        .background(Color.black.opacity(0.3))
-                        .cornerRadius(8)
-                        .shadow(radius: 3)
-                        .padding([.trailing, .bottom], 4),
-                    alignment: .bottomTrailing
-                )
+                if withOverlay {
+                    overlayTimeStamp
+                }
             }
             .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 6)
             .scaleEffect(popScale)
@@ -48,6 +31,31 @@ struct ImageWithOverlay: View {
             }
     }
 
+    private var overlayTimeStamp: some View {
+        // Add gradient overlay for better contrast
+        LinearGradient(
+            gradient: Gradient(
+                colors: [.clear, .black.opacity(0.6)]
+            ),
+            startPoint: .center,
+            endPoint: .bottom
+        )
+        .frame(height: 100)
+        .cornerRadius(15)
+        .overlay(
+            Text(formatDate(item.timestamp))
+                .bold()
+                .font(.title)
+                .foregroundColor(.white)
+                .padding(8)
+                .background(Color.black.opacity(0.3))
+                .cornerRadius(8)
+                .shadow(radius: 3)
+                .padding([.trailing, .bottom], 4),
+            alignment: .bottomTrailing
+        )
+    }
+
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "d/M/yy h:mm a"
@@ -56,6 +64,25 @@ struct ImageWithOverlay: View {
 }
 
 #Preview {
-    ImageWithOverlay(item: StoredPhoto(timestamp: Date(), url: "fakeURL", image: UIImage(named: "demo")!.pngData()!))
-        .modelContainer(for: StoredPhoto.self, inMemory: true)
+    ImageWithOverlay(
+        item: StoredPhoto(
+            timestamp: Date(),
+            url: "fakeURL",
+            image: UIImage(named: "demo")!.pngData()!
+        ),
+        withOverlay: true
+    )
+    .previewDisplayName("with Overlay")
+}
+
+#Preview {
+    ImageWithOverlay(
+        item: StoredPhoto(
+            timestamp: Date(),
+            url: "fakeURL",
+            image: UIImage(named: "demo")!.pngData()!
+        ),
+        withOverlay: false
+    )
+    .previewDisplayName("without Overlay")
 }
