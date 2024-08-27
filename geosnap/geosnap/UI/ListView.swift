@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct ListView: View {
-    let items: [Item]
+    let items: [StoredPhoto]
     @State private var seenItemIDs: Set<Int> = []
 
     var body: some View {
@@ -21,7 +21,7 @@ struct ListView: View {
         }
     }
 
-    private func animatePopOfNewItems(_ item: Item) {
+    private func animatePopOfNewItems(_ item: StoredPhoto) {
         guard isNewItem(item) else {
             return
         }
@@ -30,7 +30,7 @@ struct ListView: View {
         }
     }
 
-    private func isNewItem(_ item: Item) -> Bool {
+    private func isNewItem(_ item: StoredPhoto) -> Bool {
         return !seenItemIDs.contains(item.id.hashValue)
     }
 }
@@ -39,7 +39,7 @@ struct ListView: View {
 #Preview {
     ListView(
         items: (0..<5).map { _ in
-            Item(timestamp: Date(), url: "fakeURL", image: UIImage(named: "demo")!.pngData()!)
+            StoredPhoto(timestamp: Date(), url: "fakeURL", image: UIImage(named: "demo")!.pngData()!)
         }
     )
 }

@@ -5,7 +5,7 @@ import SwiftData
 @main
 struct GeosnapApp: App {
     var sharedModelContainer: ModelContainer = {
-        let schema = Schema([Item.self])
+        let schema = Schema([StoredPhoto.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])

@@ -9,9 +9,9 @@ struct MainView: View {
 
     @Environment(\.modelContext) private var modelContext
 
-    @Query(FetchDescriptor<Item>(
+    @Query(FetchDescriptor<StoredPhoto>(
         sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
-    )) private var items: [Item]
+    )) private var items: [StoredPhoto]
 
     var locationManager: LocationTracking
     @ObservedObject var errorHandling: ErrorHandling
@@ -107,5 +107,5 @@ struct MainView: View {
     }
 
     return MainView(locationManager: MockLocationManager(), errorHandling: MockErrorHandling())
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: StoredPhoto.self, inMemory: true)
 }

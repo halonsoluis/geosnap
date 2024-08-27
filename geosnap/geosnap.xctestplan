@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "C94BAE4B-C21E-4EE6-9B7C-B527B6582B98",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:geosnap.xcodeproj",
+      "identifier" : "5B52D6632C791F02005365E2",
+      "name" : "geosnap"
+    }
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "FlickPhotoServiceTests"
+      ],
+      "target" : {
+        "containerPath" : "container:geosnap.xcodeproj",
+        "identifier" : "5B52D6752C791F04005365E2",
+        "name" : "geosnapTests"
+      }
+    }
+  ],
+  "version" : 1
+}

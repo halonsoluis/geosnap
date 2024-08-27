@@ -25,15 +25,16 @@
 		5B09F1C12C7E48430044BD8C /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1C02C7E48430044BD8C /* EmptyView.swift */; };
 		5B09F1C32C7E48770044BD8C /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1C22C7E48770044BD8C /* ListView.swift */; };
 		5B09F1C52C7E49290044BD8C /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1C42C7E49290044BD8C /* ClearButton.swift */; };
+		5B09F1C82C7E519E0044BD8C /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1C72C7E519E0044BD8C /* PhotoError.swift */; };
 		5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6672C791F02005365E2 /* GeosnapApp.swift */; };
 		5B52D66A2C791F02005365E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6692C791F02005365E2 /* MainView.swift */; };
-		5B52D66C2C791F02005365E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* Item.swift */; };
+		5B52D66C2C791F02005365E2 /* StoredPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* StoredPhoto.swift */; };
 		5B52D66E2C791F04005365E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D66D2C791F04005365E2 /* Assets.xcassets */; };
 		5B52D6712C791F04005365E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B52D6702C791F04005365E2 /* Preview Assets.xcassets */; };
 		5B52D67B2C791F04005365E2 /* FlickPhotoServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */; };
 		5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */; };
 		5B83DE502C7B369C00DDB69F /* FlickrPhotoResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */; };
-		5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */; };
+		5B83DE522C7B383300DDB69F /* FlickrServiceJSONEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE512C7B383300DDB69F /* FlickrServiceJSONEntities.swift */; };
 		5B83DE552C7BF3A200DDB69F /* Photo+URLResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */; };
 		5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */; };
 		5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B83DE592C7C068800DDB69F /* LocationManager.swift */; };
@@ -90,17 +91,19 @@
 		5B09F1C02C7E48430044BD8C /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		5B09F1C22C7E48770044BD8C /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		5B09F1C42C7E49290044BD8C /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
+		5B09F1C72C7E519E0044BD8C /* PhotoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
+		5B09F1CA2C7E52D20044BD8C /* geosnap.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = geosnap.xctestplan; sourceTree = "<group>"; };
 		5B52D6642C791F02005365E2 /* geosnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geosnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B52D6672C791F02005365E2 /* GeosnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeosnapApp.swift; sourceTree = "<group>"; };
 		5B52D6692C791F02005365E2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		5B52D66B2C791F02005365E2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5B52D66B2C791F02005365E2 /* StoredPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredPhoto.swift; sourceTree = "<group>"; };
 		5B52D66D2C791F04005365E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B52D6702C791F04005365E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B52D6762C791F04005365E2 /* geosnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = geosnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B52D67A2C791F04005365E2 /* FlickPhotoServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoServiceTests.swift; sourceTree = "<group>"; };
 		5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickPhotoService.swift; sourceTree = "<group>"; };
 		5B83DE4F2C7B369C00DDB69F /* FlickrPhotoResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponseTests.swift; sourceTree = "<group>"; };
-		5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoResponse.swift; sourceTree = "<group>"; };
+		5B83DE512C7B383300DDB69F /* FlickrServiceJSONEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrServiceJSONEntities.swift; sourceTree = "<group>"; };
 		5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+URLResolution.swift"; sourceTree = "<group>"; };
 		5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		5B83DE592C7C068800DDB69F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -180,9 +183,26 @@
 			path = LiveActivityWidget;
 			sourceTree = "<group>";
 		};
+		5B09F1C62C7E50DF0044BD8C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D6672C791F02005365E2 /* GeosnapApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5B09F1C92C7E52050044BD8C /* StorageModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B52D66B2C791F02005365E2 /* StoredPhoto.swift */,
+			);
+			path = StorageModel;
+			sourceTree = "<group>";
+		};
 		5B52D65B2C791F02005365E2 = {
 			isa = PBXGroup;
 			children = (
+				5B09F1CA2C7E52D20044BD8C /* geosnap.xctestplan */,
 				5B52D6662C791F02005365E2 /* geosnap */,
 				5B52D6792C791F04005365E2 /* geosnapTests */,
 				5B09F19E2C7CDF540044BD8C /* LiveActivityWidget */,
@@ -204,13 +224,13 @@
 		5B52D6662C791F02005365E2 /* geosnap */ = {
 			isa = PBXGroup;
 			children = (
+				5B09F1C62C7E50DF0044BD8C /* Main */,
 				5B09F1912C7CD4B70044BD8C /* LifeActivity */,
 				5B09F18E2C7CD26D0044BD8C /* UI */,
 				5B83DE582C7C067400DDB69F /* MotionHandling */,
 				5B83DE532C7BF36C00DDB69F /* DataHandling */,
 				5B83DE4C2C7B2E2D00DDB69F /* Networking */,
 				5B83DE5B2C7C0CC800DDB69F /* Info.plist */,
-				5B52D6672C791F02005365E2 /* GeosnapApp.swift */,
 				5B52D66D2C791F04005365E2 /* Assets.xcassets */,
 				5B52D66F2C791F04005365E2 /* Preview Content */,
 			);
@@ -237,9 +257,10 @@
 		5B83DE4C2C7B2E2D00DDB69F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */,
-				5B83DE512C7B383300DDB69F /* FlickrPhotoResponse.swift */,
 				5B09F1B62C7D342E0044BD8C /* PhotoService.swift */,
+				5B09F1C72C7E519E0044BD8C /* PhotoError.swift */,
+				5B83DE4D2C7B2E4E00DDB69F /* FlickPhotoService.swift */,
+				5B83DE512C7B383300DDB69F /* FlickrServiceJSONEntities.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -247,7 +268,7 @@
 		5B83DE532C7BF36C00DDB69F /* DataHandling */ = {
 			isa = PBXGroup;
 			children = (
-				5B52D66B2C791F02005365E2 /* Item.swift */,
+				5B09F1C92C7E52050044BD8C /* StorageModel */,
 				5B83DE542C7BF3A200DDB69F /* Photo+URLResolution.swift */,
 				5B83DE562C7BFA8D00DDB69F /* ImageStorage.swift */,
 			);
@@ -411,18 +432,19 @@
 				5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */,
 				5B09F1BB2C7E43C80044BD8C /* ImageWithOverlay.swift in Sources */,
 				5B52D66A2C791F02005365E2 /* MainView.swift in Sources */,
-				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
+				5B52D66C2C791F02005365E2 /* StoredPhoto.swift in Sources */,
 				5B09F1C12C7E48430044BD8C /* EmptyView.swift in Sources */,
 				5B09F1C32C7E48770044BD8C /* ListView.swift in Sources */,
 				5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */,
 				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,
+				5B09F1C82C7E519E0044BD8C /* PhotoError.swift in Sources */,
 				5B09F1B72C7D342E0044BD8C /* PhotoService.swift in Sources */,
 				5B09F1BF2C7E44FE0044BD8C /* ApiKeyInputOverlay.swift in Sources */,
 				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
 				5B09F1C52C7E49290044BD8C /* ClearButton.swift in Sources */,
 				5B09F1BD2C7E44C40044BD8C /* ErrorBannerView.swift in Sources */,
 				5B09F1B92C7E42350044BD8C /* ToggleActivityButtonView.swift in Sources */,
-				5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */,
+				5B83DE522C7B383300DDB69F /* FlickrServiceJSONEntities.swift in Sources */,
 				5B09F1B42C7D159C0044BD8C /* WalkingActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,8 +724,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RU5U8BC26T;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
@@ -721,8 +745,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RU5U8BC26T;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;

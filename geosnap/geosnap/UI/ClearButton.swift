@@ -6,7 +6,7 @@ import SwiftData
 
 struct ClearButton: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var items: [StoredPhoto]
 
     var body: some View {
         Button(action: clean, label: {

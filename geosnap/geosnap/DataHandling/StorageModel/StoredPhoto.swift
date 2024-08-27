@@ -5,7 +5,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Item {
+final class StoredPhoto {
     @Attribute(.unique)
     var timestamp: Date
 

@@ -5,18 +5,18 @@ import Foundation
 import SwiftData
 
 struct ImageStorage {
-    static func downloadAndCreateImageItem(from urlString: String) async throws -> Item {
+    static func downloadAndCreateImageItem(from urlString: String) async throws -> StoredPhoto {
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
 
         let (data, _) = try await URLSession.shared.data(from: url)
-        let newItem = Item(timestamp: Date(), url: urlString, image: data)
+        let newItem = StoredPhoto(timestamp: Date(), url: urlString, image: data)
 
         return newItem
     }
 
-    static func saveImage(newItem: Item, context: ModelContext) throws {
+    static func saveImage(newItem: StoredPhoto, context: ModelContext) throws {
 
         let allItems = try allItems(context: context)
 
@@ -30,9 +30,9 @@ struct ImageStorage {
         try context.save()
     }
 
-    static private func allItems(context: ModelContext) throws -> [Item] {
+    static private func allItems(context: ModelContext) throws -> [StoredPhoto] {
 
-        var fetchDescriptor = FetchDescriptor<Item>()
+        var fetchDescriptor = FetchDescriptor<StoredPhoto>()
         fetchDescriptor.propertiesToFetch = [\.timestamp, \.url]
 
         return try context.fetch(fetchDescriptor)

@@ -24,6 +24,8 @@ struct FlickrFailResponse: Decodable {
     }
 }
 
+
+// Will use only what is needed for a very simple MVP, loading only 1 foto if available
 struct Photos: Decodable {
     //   let page: Int
     //   let pages: Int
@@ -32,6 +34,7 @@ struct Photos: Decodable {
     let photo: [Photo]
 }
 
+// Only parse what is relevant as for this MVP
 struct Photo: Decodable {
     let id: String
     //  let owner: String

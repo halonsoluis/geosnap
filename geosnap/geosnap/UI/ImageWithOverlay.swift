@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct ImageWithOverlay: View {
-    let item: Item
+    let item: StoredPhoto
     @State private var popScale: CGFloat = 0.99
 
     var body: some View {
@@ -56,6 +56,6 @@ struct ImageWithOverlay: View {
 }
 
 #Preview {
-    ImageWithOverlay(item: Item(timestamp: Date(), url: "fakeURL", image: UIImage(named: "demo")!.pngData()!))
-        .modelContainer(for: Item.self, inMemory: true)
+    ImageWithOverlay(item: StoredPhoto(timestamp: Date(), url: "fakeURL", image: UIImage(named: "demo")!.pngData()!))
+        .modelContainer(for: StoredPhoto.self, inMemory: true)
 }
