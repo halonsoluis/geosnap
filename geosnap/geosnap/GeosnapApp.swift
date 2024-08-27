@@ -4,9 +4,6 @@ import SwiftData
 
 @main
 struct GeosnapApp: App {
-
-    @AppStorage("apiKey") private var apiKey: String = ""
-
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([Item.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -40,7 +37,6 @@ struct GeosnapApp: App {
             MainView(locationManager: locationManager, errorHandling: errorHandling)
                 .onAppear {
                     photoService.imageURL = addNewItem
-                    photoService.apiKey = apiKey
                 }
         }
         .modelContainer(sharedModelContainer)
@@ -62,8 +58,6 @@ struct GeosnapApp: App {
 class ErrorHandling: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var shouldHandleInvalidKey = false
-
-    var apiKey: String?
 }
 
 private struct CompositionalLocationManager: LocationTracking {
@@ -95,7 +89,6 @@ private class ErrorHandlingPhotoService: ErrorHandling, PhotoService {
     @MainActor
     func fetchPhoto(latitude: Double, longitude: Double) async throws {
         do {
-            primaryPhotoService.apiKey = apiKey
             try await primaryPhotoService.fetchPhoto(latitude: latitude, longitude: longitude)
             
             errorMessage = ""

@@ -6,5 +6,4 @@ import Foundation
 protocol PhotoService: AnyObject {
     func fetchPhoto(latitude: Double, longitude: Double) async throws
     var imageURL: ((String) -> Void)? { get set }
-    var apiKey: String? { get set }
 }

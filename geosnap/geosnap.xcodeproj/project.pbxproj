@@ -18,6 +18,13 @@
 		5B09F1B42C7D159C0044BD8C /* WalkingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */; };
 		5B09F1B52C7D15A30044BD8C /* WalkingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */; };
 		5B09F1B72C7D342E0044BD8C /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B62C7D342E0044BD8C /* PhotoService.swift */; };
+		5B09F1B92C7E42350044BD8C /* ToggleActivityButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1B82C7E42340044BD8C /* ToggleActivityButtonView.swift */; };
+		5B09F1BB2C7E43C80044BD8C /* ImageWithOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1BA2C7E43C80044BD8C /* ImageWithOverlay.swift */; };
+		5B09F1BD2C7E44C40044BD8C /* ErrorBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1BC2C7E44C40044BD8C /* ErrorBannerView.swift */; };
+		5B09F1BF2C7E44FE0044BD8C /* ApiKeyInputOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1BE2C7E44FE0044BD8C /* ApiKeyInputOverlay.swift */; };
+		5B09F1C12C7E48430044BD8C /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1C02C7E48430044BD8C /* EmptyView.swift */; };
+		5B09F1C32C7E48770044BD8C /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1C22C7E48770044BD8C /* ListView.swift */; };
+		5B09F1C52C7E49290044BD8C /* ClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F1C42C7E49290044BD8C /* ClearButton.swift */; };
 		5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6672C791F02005365E2 /* GeosnapApp.swift */; };
 		5B52D66A2C791F02005365E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D6692C791F02005365E2 /* MainView.swift */; };
 		5B52D66C2C791F02005365E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52D66B2C791F02005365E2 /* Item.swift */; };
@@ -76,6 +83,13 @@
 		5B09F1A92C7CDF560044BD8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B09F1B32C7D159C0044BD8C /* WalkingActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingActivityAttributes.swift; sourceTree = "<group>"; };
 		5B09F1B62C7D342E0044BD8C /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		5B09F1B82C7E42340044BD8C /* ToggleActivityButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleActivityButtonView.swift; sourceTree = "<group>"; };
+		5B09F1BA2C7E43C80044BD8C /* ImageWithOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithOverlay.swift; sourceTree = "<group>"; };
+		5B09F1BC2C7E44C40044BD8C /* ErrorBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBannerView.swift; sourceTree = "<group>"; };
+		5B09F1BE2C7E44FE0044BD8C /* ApiKeyInputOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyInputOverlay.swift; sourceTree = "<group>"; };
+		5B09F1C02C7E48430044BD8C /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		5B09F1C22C7E48770044BD8C /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		5B09F1C42C7E49290044BD8C /* ClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButton.swift; sourceTree = "<group>"; };
 		5B52D6642C791F02005365E2 /* geosnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = geosnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B52D6672C791F02005365E2 /* GeosnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeosnapApp.swift; sourceTree = "<group>"; };
 		5B52D6692C791F02005365E2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -125,6 +139,13 @@
 			isa = PBXGroup;
 			children = (
 				5B52D6692C791F02005365E2 /* MainView.swift */,
+				5B09F1B82C7E42340044BD8C /* ToggleActivityButtonView.swift */,
+				5B09F1BA2C7E43C80044BD8C /* ImageWithOverlay.swift */,
+				5B09F1BC2C7E44C40044BD8C /* ErrorBannerView.swift */,
+				5B09F1BE2C7E44FE0044BD8C /* ApiKeyInputOverlay.swift */,
+				5B09F1C02C7E48430044BD8C /* EmptyView.swift */,
+				5B09F1C22C7E48770044BD8C /* ListView.swift */,
+				5B09F1C42C7E49290044BD8C /* ClearButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -388,12 +409,19 @@
 				5B83DE5D2C7CBC6F00DDB69F /* LocationTracking.swift in Sources */,
 				5B09F1932C7CD4C40044BD8C /* WalkingTracker.swift in Sources */,
 				5B83DE572C7BFA8D00DDB69F /* ImageStorage.swift in Sources */,
+				5B09F1BB2C7E43C80044BD8C /* ImageWithOverlay.swift in Sources */,
 				5B52D66A2C791F02005365E2 /* MainView.swift in Sources */,
 				5B52D66C2C791F02005365E2 /* Item.swift in Sources */,
+				5B09F1C12C7E48430044BD8C /* EmptyView.swift in Sources */,
+				5B09F1C32C7E48770044BD8C /* ListView.swift in Sources */,
 				5B83DE5A2C7C068800DDB69F /* LocationManager.swift in Sources */,
 				5B83DE4E2C7B2E4E00DDB69F /* FlickPhotoService.swift in Sources */,
 				5B09F1B72C7D342E0044BD8C /* PhotoService.swift in Sources */,
+				5B09F1BF2C7E44FE0044BD8C /* ApiKeyInputOverlay.swift in Sources */,
 				5B52D6682C791F02005365E2 /* GeosnapApp.swift in Sources */,
+				5B09F1C52C7E49290044BD8C /* ClearButton.swift in Sources */,
+				5B09F1BD2C7E44C40044BD8C /* ErrorBannerView.swift in Sources */,
+				5B09F1B92C7E42350044BD8C /* ToggleActivityButtonView.swift in Sources */,
 				5B83DE522C7B383300DDB69F /* FlickrPhotoResponse.swift in Sources */,
 				5B09F1B42C7D159C0044BD8C /* WalkingActivityAttributes.swift in Sources */,
 			);
@@ -613,6 +641,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = geosnap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GeoSnap;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -646,6 +676,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = geosnap/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GeoSnap;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

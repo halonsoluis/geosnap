@@ -3,32 +3,38 @@ import ActivityKit
 import SwiftData
 
 struct MainView: View {
+    @State private var isWalkActive = false
+    @State private var isShowingApiKeyPopover = false
+    @State private var showingTextFieldOverlay = false
+
     @Environment(\.modelContext) private var modelContext
 
     @Query(FetchDescriptor<Item>(
         sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
     )) private var items: [Item]
 
-    @State private var isWalkActive = false
-    @State private var seenItemIDs: Set<Int> = []
-
     var locationManager: LocationTracking
-
     @ObservedObject var errorHandling: ErrorHandling
-    @State private var isShowingApiKeyPopover = false
-    @State private var newApiKey = ""
-    @State private var showingTextFieldOverlay = false
-    @FocusState private var isTextFieldFocused: Bool
-
-    @AppStorage("apiKey") private var apiKey: String = ""
 
     var body: some View {
         ZStack {
             NavigationView {
-                if items.isEmpty {
-                    emptyView
-                } else {
-                    listView
+                VStack {
+                    if items.isEmpty {
+                        EmptyView(isWalkActive: $isWalkActive)
+                    } else {
+                        ListView(items: items)
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        ToggleActivityButtonView(isWalkActive: $isWalkActive)
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if !items.isEmpty {
+                            ClearButton()
+                        }
+                    }
                 }
 
             }.onChange(of: isWalkActive) { _,_ in
@@ -39,265 +45,39 @@ struct MainView: View {
                 }
                 isShowingApiKeyPopover = newValue
             }.alert(isPresented: $isShowingApiKeyPopover) {
-                Alert(
-                    title: Text("Invalid API Key"),
-                    message: Text("Your current API key is not valid. Please enter a new one."),
-                    primaryButton: .default(Text("Enter")) {
-                        showingTextFieldOverlay = true
-                    },
-                    secondaryButton: .cancel() {
-                        errorHandling.shouldHandleInvalidKey = false
-                    }
-                )
+                invalidApiKeyAlert()
             }
 
             if !errorHandling.errorMessage.isEmpty {
-                errorBannerView(message: errorHandling.errorMessage)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .zIndex(1)
+                ErrorBannerView(message: errorHandling.errorMessage)
+
             }
 
             if showingTextFieldOverlay {
-                apiKeyInputOverlay
+                ApiKeyInputOverlay(
+                    showingTextFieldOverlay: $showingTextFieldOverlay,
+                    handleNewAPIKey: newApiKeyHandled
+                )
             }
         }
     }
 
-    private var listView: some View {
-        ScrollView(.vertical) {
-            LazyVStack(alignment: .center, spacing: 10) {
-                ForEach(items, id: \.self) { item in
-                    ImageWithOverlay(item: item)
-                        .onAppear(perform: { animatePopOfNewItems(item) })
-                }
+    private func invalidApiKeyAlert() -> Alert {
+        Alert(
+            title: Text("Invalid API Key"),
+            message: Text("Your current API key is not valid. Please enter a new one."),
+            primaryButton: .default(Text("Enter")) {
+                showingTextFieldOverlay = true
+            },
+            secondaryButton: .cancel {
+                errorHandling.shouldHandleInvalidKey = false
             }
-            .padding()
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                ToggleActivityButtonView(isWalkActive: $isWalkActive)
-            }
-
-            ToolbarItem(placement: .navigationBarLeading) {
-                ClearButton()
-            }
-        }
-
+        )
     }
 
-    private var emptyView: some View {
-        VStack(alignment: .center) {
-            Image(systemName: isWalkActive ? "figure.walk.departure" : "figure.stand")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 150, height: 150)
-                .foregroundColor(.primary)
 
-            Text("Every 100 meters I'll attempt to gather a new photo for you.")
-                .bold()
-                .font(.caption2)
-                .foregroundColor(.primary)
-                .padding(8)
-                .cornerRadius(8)
-                .padding([.leading, .trailing, .bottom], 4)
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                ToggleActivityButtonView(isWalkActive: $isWalkActive)
-            }
-        }
-    }
-
-    private func animatePopOfNewItems(_ item: Item) {
-        guard isNewItem(item) else {
-            return
-        }
-        _ = withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
-            seenItemIDs.insert(item.id.hashValue)
-        }
-    }
-
-    private struct ClearButton: View {
-        @Environment(\.modelContext) private var modelContext
-        @Query private var items: [Item]
-
-        var body: some View {
-            Button(action: clean, label: {
-                Text("Clear")
-                    .font(.title3)
-                    .padding()
-                    .foregroundColor(.red)
-                    .cornerRadius(10)
-            })
-        }
-
-        private func clean() {
-            // Remove all items from the database
-            for item in items {
-                modelContext.delete(item)
-            }
-
-            do {
-                // Save the context after deletions
-                try modelContext.save()
-                print("All items removed from the database.")
-            } catch {
-                print("Failed to remove items: \(error.localizedDescription)")
-            }
-        }
-    }
-
-    private func errorBannerView(message: String) -> some View {
-        VStack(alignment: .trailing) {
-            Spacer()
-
-            HStack {
-                Text(message)
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .padding()
-            }
-            .background(Color.red.opacity(0.60))
-            .cornerRadius(10)
-            .shadow(radius: 5)
-            .padding()
-        }
-        .transition(.move(edge: .top))
-        .animation(.spring(), value: message)
-    }
-
-    private var apiKeyInputOverlay: some View {
-        VStack {
-            Spacer()
-
-            VStack(spacing: 16) {
-                Text("Enter New API Key")
-                    .font(.headline)
-                    .padding()
-
-                TextField("New API Key", text: $newApiKey)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .padding()
-                    .focused($isTextFieldFocused)
-                    .onAppear {
-                        isTextFieldFocused = true
-                    }.onDisappear {
-                        isTextFieldFocused = false
-                    }
-
-
-                HStack(alignment: .center) {
-                    Button("Cancel") {
-                        showingTextFieldOverlay = false
-                    }
-                    .padding()
-                    .foregroundColor(.red)
-
-                    Spacer()
-
-                    Button("Save") {
-                        showingTextFieldOverlay = false
-                        handleNewApiKey()
-                    }
-                    .padding()
-                }
-            }
-            .padding()
-            .background(Color(UIColor.systemBackground))
-            .cornerRadius(12)
-            .shadow(radius: 10)
-            .padding()
-
-            Spacer()
-        }
-        .background(Color.black.opacity(0.4).edgesIgnoringSafeArea(.all))
-    }
-
-    private func handleNewApiKey() {
-        print("New API Key entered: \(newApiKey)")
-        errorHandling.apiKey = newApiKey
+    private func newApiKeyHandled() {
         isShowingApiKeyPopover = false
-        apiKey = newApiKey
-    }
-
-    private struct ImageWithOverlay: View {
-        let item: Item
-        @State private var popScale: CGFloat = 0.99
-
-        var body: some View {
-            Image(uiImage: UIImage(data: item.image) ?? UIImage())
-                .resizable()
-                .scaledToFit()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: .infinity)
-                .background(Color.black.opacity(0.7))
-                .cornerRadius(15)
-                .overlay(alignment: .bottomTrailing) {
-                    // Add gradient overlay for better contrast
-                    LinearGradient(
-                        gradient: Gradient(
-                            colors: [.clear, .black.opacity(0.6)]
-                        ),
-                        startPoint: .center,
-                        endPoint: .bottom
-                    )
-                    .frame(height: 100)
-                    .cornerRadius(15)
-                    .overlay(
-                        Text(formatDate(item.timestamp))
-                            .bold()
-                            .font(.title)
-                            .foregroundColor(.white)
-                            .padding(8)
-                            .background(Color.black.opacity(0.3))
-                            .cornerRadius(8)
-                            .shadow(radius: 3)
-                            .padding([.trailing, .bottom], 4),
-                        alignment: .bottomTrailing
-                    )
-                }
-                .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 6)
-                .scaleEffect(popScale)
-                .onAppear {
-                    // Smooth scaling animation
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0.2)) {
-                        popScale = 1.0
-                    }
-                }
-        }
-
-        private func formatDate(_ date: Date) -> String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d/M/yy h:mm a"
-            return formatter.string(from: date)
-        }
-
-    }
-
-
-    private struct ToggleActivityButtonView: View {
-        @Binding var isWalkActive: Bool
-
-        var labelText: String {
-            isWalkActive ? "Stop" : "Start"
-        }
-
-        var body: some View {
-            Button(action: toggle, label: {
-                Text(labelText)
-                    .font(.title3)
-                    .padding()
-                    .foregroundColor(.primary)
-                    .cornerRadius(10)
-            })
-        }
-
-        private func toggle() {
-            print("\(labelText) Walk")
-            isWalkActive.toggle()
-        }
     }
 
     private func startWalk() {
@@ -308,27 +88,24 @@ struct MainView: View {
         locationManager.stopTracking()
     }
 
-
-    private func isNewItem(_ item: Item) -> Bool {
-        return !seenItemIDs.contains(item.id.hashValue)
-    }
-}
-
-struct MockLocationManager: LocationTracking {
-    func startTracking() {
-        print("Start tracking")
-    }
-
-    func stopTracking() {
-        print("Stop tracking")
-    }
-}
-
-class MockErrorHandling: ErrorHandling {
-
 }
 
 #Preview {
-    MainView(locationManager: MockLocationManager(), errorHandling: MockErrorHandling())
+
+    struct MockLocationManager: LocationTracking {
+        func startTracking() {
+            print("Start tracking")
+        }
+
+        func stopTracking() {
+            print("Stop tracking")
+        }
+    }
+
+    class MockErrorHandling: ErrorHandling {
+
+    }
+
+    return MainView(locationManager: MockLocationManager(), errorHandling: MockErrorHandling())
         .modelContainer(for: Item.self, inMemory: true)
 }

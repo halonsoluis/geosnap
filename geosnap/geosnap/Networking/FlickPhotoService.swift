@@ -15,8 +15,11 @@ enum PhotoError: Error {
 // MARK: - Flickr API Implementation
 class FlickrPhotoService: PhotoService {
 
-    var apiKey: String?
     var imageURL: ((String) -> Void)?
+
+    var apiKey: String? {
+        UserDefaults.standard.string(forKey: "apiKey")
+    }
 
     func fetchPhoto(latitude: Double, longitude: Double) async throws {
         let photo = try await fetchPhotoWithReturn(latitude: latitude, longitude: longitude)
@@ -27,7 +30,6 @@ class FlickrPhotoService: PhotoService {
 
         imageURL?(url.absoluteString)
     }
-
 
     func fetchPhotoWithReturn(latitude: Double, longitude: Double) async throws -> Photo {
         guard let apiKey else {
