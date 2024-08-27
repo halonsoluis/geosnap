@@ -74,12 +74,15 @@ Each component, such as location tracking, API communication, and error handling
 - **Multiple Image Support**: Extend the app to allow fetching & presenting more than one image from Flickr per location update. This would also allow to download a different image for a location for which the first image is already downloaded.
 - **Live Activity**: Display more valuable information about the user's location, such as the current speed, distance from starting point, images downloaded while the app was not in foreground, etc.
 - **Verify Possible Bugs**: Write more tests to verify that the app is working as expected. There's a big chance of having a few memory leaks. Mainly cuz I haven't used weak/unowned not even once. Nevertheles, running instruments to find them is not the way to go.
-- **Linters and Formatters**: Integrate linters and formatters to ensure code quality and consistency.
-- **Static Analysis**: Use static analysis tools to identify potential issues and improve code quality.
 
 <p align="center">
 <img src="images/memory leaks.png" width="100%"/>
 </p>
+
+- **Linters and Formatters**: Integrate linters and formatters to ensure code quality and consistency.
+- **Static Analysis**: Use static analysis tools to identify potential issues and improve code quality.
+
+
 
 ## Summary of Decisions
 
