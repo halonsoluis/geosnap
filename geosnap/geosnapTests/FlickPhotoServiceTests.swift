@@ -11,7 +11,8 @@ final class FlickPhotoServiceTests: XCTestCase {
     private let validKey = "0006d738e8153f957da524a119c8bca0" // will be expired soon, this is a book definition flaky test
 
     override func setUp() {
-        service = FlickrPhotoService(apiKey: validKey)
+        service = FlickrPhotoService()
+        service.apiKey = validKey
     }
 
     override func tearDown() {

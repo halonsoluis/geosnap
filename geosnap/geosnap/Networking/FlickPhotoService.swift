@@ -15,19 +15,14 @@ enum PhotoError: Error {
 // MARK: - Flickr API Implementation
 class FlickrPhotoService: PhotoService {
 
-    var apiKey: String
+    var apiKey: String?
     var imageURL: ((String) -> Void)?
-
-    init(apiKey: String) {
-        self.apiKey = apiKey
-    }
 
     func fetchPhoto(latitude: Double, longitude: Double) async throws {
         let photo = try await fetchPhotoWithReturn(latitude: latitude, longitude: longitude)
 
         guard let url = photo.url else {
-            print("Failed to create url")
-            return
+            throw PhotoError.invalidURL
         }
 
         imageURL?(url.absoluteString)
@@ -35,6 +30,9 @@ class FlickrPhotoService: PhotoService {
 
 
     func fetchPhotoWithReturn(latitude: Double, longitude: Double) async throws -> Photo {
+        guard let apiKey else {
+            throw PhotoError.withFlickrError(FlickrFailResponse(code: 100, message: "API key not present"))
+        }
         var urlComponents = URLComponents(string: "https://www.flickr.com/services/rest/")!
 
         urlComponents.queryItems = [

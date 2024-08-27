@@ -18,6 +18,10 @@ struct FlickrPhotoResponse: Decodable {
 struct FlickrFailResponse: Decodable {
     let code: Int
     let message: String
+
+    var invalidAPIKey: Bool {
+        code == 100
+    }
 }
 
 struct Photos: Decodable {

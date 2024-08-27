@@ -13,17 +13,27 @@ struct MainView: View {
     @State private var seenItemIDs: Set<Int> = []
 
     var locationManager: LocationTracking
+    @ObservedObject var errorHandling: ErrorHandling
 
 
     var body: some View {
-        NavigationView {
-            if items.isEmpty {
-                emptyView
-            } else {
-                listView
+        ZStack {
+            NavigationView {
+                if items.isEmpty {
+                    emptyView
+                } else {
+                    listView
+                }
+
+            }.onChange(of: isWalkActive) { _,_ in
+                isWalkActive ? startWalk() : stopWalk()
             }
-        }.onChange(of: isWalkActive) { _,_ in
-            isWalkActive ? startWalk() : stopWalk()
+
+            if !errorHandling.errorMessage.isEmpty {
+                errorBannerView(message: errorHandling.errorMessage)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .zIndex(1)
+            }
         }
     }
 
@@ -109,6 +119,25 @@ struct MainView: View {
                 print("Failed to remove items: \(error.localizedDescription)")
             }
         }
+    }
+
+    private func errorBannerView(message: String) -> some View {
+        VStack(alignment: .trailing) {
+            Spacer()
+
+            HStack {
+                Text(message)
+                    .font(.body)
+                    .foregroundColor(.white)
+                    .padding()
+            }
+            .background(Color.red.opacity(0.60))
+            .cornerRadius(10)
+            .shadow(radius: 5)
+            .padding()
+        }
+        .transition(.move(edge: .top))
+        .animation(.spring(), value: message)
     }
 
     private struct ImageWithOverlay: View {
@@ -214,7 +243,11 @@ struct MockLocationManager: LocationTracking {
     }
 }
 
+class MockErrorHandling: ErrorHandling {
+
+}
+
 #Preview {
-    MainView(locationManager: MockLocationManager())
+    MainView(locationManager: MockLocationManager(), errorHandling: MockErrorHandling())
         .modelContainer(for: Item.self, inMemory: true)
 }
