@@ -41,4 +41,3 @@ private func expandedContent(contentState: WalkingActivityAttributes.ContentStat
         Image(systemName: "figure.walk")
     }
 }
-

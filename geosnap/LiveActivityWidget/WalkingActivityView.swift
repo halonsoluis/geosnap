@@ -34,3 +34,27 @@ struct WalkingLiveActivityView: View {
         return formatter.string(from: interval) ?? ""
     }
 }
+
+struct WalkingActivityAttributes_Previews: PreviewProvider {
+    static var previews: some View {
+        let state = Activity<WalkingActivityAttributes>.ContentState(distanceWalked: 10, elapsedTime: Date().timeIntervalSince1970)
+
+        return WalkingLiveActivityView(
+            context: state
+        )
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
+        .containerBackground(for: .widget, alignment: .center) {}
+        .previewDisplayName("Live Activity Widget")
+    }
+}
+
+// Due to some issue, (like for example, my lack of knowledge) I can't make it work with the modern way
+/*
+#Preview {
+    let state = Activity<WalkingActivityAttributes>.ContentState(distanceWalked: 10, elapsedTime: Date().timeIntervalSince1970)
+    return WalkingLiveActivityView(
+        context: state
+    )
+    .previewContext(WidgetPreviewContext(family: .systemMedium))
+}
+*/
