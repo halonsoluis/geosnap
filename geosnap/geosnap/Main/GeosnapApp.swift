@@ -4,6 +4,7 @@ import SwiftData
 
 @main
 struct GeosnapApp: App {
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([StoredPhoto.self])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -21,12 +22,11 @@ struct GeosnapApp: App {
     init() {
         let photoService = FlickrPhotoService()
         let errorHandling = ErrorHandlingPhotoService(primaryPhotoService: photoService)
-        self.photoService = errorHandling
-        self.errorHandling = errorHandling
-
         let walkingTracker = WalkingTracker()
         let locationManager = LocationManager(photoService: errorHandling)
 
+        self.photoService = errorHandling
+        self.errorHandling = errorHandling
         self.locationManager = CompositionalLocationManager(
             locationService: [walkingTracker, locationManager]
         )
@@ -45,6 +45,7 @@ struct GeosnapApp: App {
                 }
         }
         .modelContainer(sharedModelContainer)
+        
     }
 
     @MainActor
