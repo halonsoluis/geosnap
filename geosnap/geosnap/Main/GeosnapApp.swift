@@ -30,6 +30,11 @@ struct GeosnapApp: App {
         self.locationManager = CompositionalLocationManager(
             locationService: [walkingTracker, locationManager]
         )
+
+        // Want to skip the queue and set an API Key so that you don't have to fill it manually on the simulator.
+        // Do it here below
+        // -----------------
+        // UserDefaults.standard.setValue("YOUR_API_KEY", forKey: "apiKey")
     }
 
     var body: some Scene {
