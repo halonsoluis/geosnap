@@ -58,7 +58,7 @@ Here are some demonstrations of the app in action:
 
 <p align="center">
 <img src="images/RecordingWithOverlay.gif" width="44%"/>
-<video src="images/RecordingWithoutOverlay.mp4" width="44%"></video>
+<img src="images/RecordingWithoutOverlay.gif" width="44%"/>
 </p>
 
 ## Code Architecture
@@ -76,3 +76,4 @@ Each component, such as location tracking, API communication, and error handling
 - **Unit Testing**: Write more unit tests to ensure the app's functionality and stability.
 - **Multiple Image Support**: Extend the app to allow fetching & presenting more than one image from Flickr per location update. This would also allow to download a different image for a location for which the first image is already downloaded.
 - **Live Activity**: Display more valuable information about the user's location, such as the current speed, distance from starting point, images downloaded while the app was not in foreground, etc.
+- **Verify Possible Bugs**: Write more tests to verify that the app is working as expected. There's a big chance of having a few memory leaks. Using instruments to find them is a good way to go.
