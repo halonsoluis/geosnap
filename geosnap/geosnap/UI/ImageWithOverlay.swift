@@ -4,8 +4,8 @@ import SwiftUI
 
 struct ImageWithOverlay: View {
     let item: StoredPhoto
+    let withOverlay: Bool
     @State private var popScale: CGFloat = 0.99
-    var withOverlay: Bool
 
     var body: some View {
         Image(uiImage: UIImage(data: item.image) ?? UIImage())

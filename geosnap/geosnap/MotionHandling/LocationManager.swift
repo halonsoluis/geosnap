@@ -14,7 +14,7 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
     private var lastLocation: CLLocation?
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
-    var photoService: PhotoService
+    let photoService: PhotoService
 
     private var activated = false
 
