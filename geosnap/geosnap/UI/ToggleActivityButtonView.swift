@@ -28,12 +28,10 @@ struct ToggleActivityButtonView: View {
     }
 }
 
-#Preview {
-    @State var walking = false
-    return ToggleActivityButtonView(isWalkActive: $walking)
+#Preview("Start Button") {
+    ToggleActivityButtonView(isWalkActive: .constant(false))
 }
 
-#Preview {
-    @State var walking = true
-    return ToggleActivityButtonView(isWalkActive: $walking)
+#Preview("Stop Button") {
+    ToggleActivityButtonView(isWalkActive: .constant(true))
 }

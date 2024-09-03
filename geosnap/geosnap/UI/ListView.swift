@@ -36,7 +36,7 @@ struct ListView: View {
 }
 
 
-#Preview {
+#Preview("Not Empty") {
     ListView(
         items: (0..<5).map { _ in
             StoredPhoto(timestamp: Date(), url: "fakeURL", image: UIImage(named: "demo")!.pngData()!)
@@ -44,6 +44,6 @@ struct ListView: View {
     )
 }
 
-#Preview {
+#Preview("Empty") {
     ListView(items: [])
 }

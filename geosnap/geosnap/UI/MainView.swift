@@ -102,10 +102,6 @@ struct MainView: View {
         }
     }
 
-    class MockErrorHandling: ErrorHandling {
-
-    }
-
-    return MainView(locationManager: MockLocationManager(), errorHandling: MockErrorHandling())
+    return MainView(locationManager: MockLocationManager(), errorHandling: ErrorHandling())
         .modelContainer(for: StoredPhoto.self, inMemory: true)
 }

@@ -61,8 +61,7 @@ struct ApiKeyInputOverlay: View {
     }
 }
 
+
 #Preview {
-    @State var showingTextFieldOverlay = true
-    func handleNewAPIKey() {}
-    return ApiKeyInputOverlay(showingTextFieldOverlay: $showingTextFieldOverlay, handleNewAPIKey: handleNewAPIKey)
+    ApiKeyInputOverlay(showingTextFieldOverlay: .constant(true), handleNewAPIKey: {})
 }

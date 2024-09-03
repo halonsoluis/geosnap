@@ -48,8 +48,6 @@ struct WalkingActivityAttributes_Previews: PreviewProvider {
     }
 }
 
-// Due to some issue, (like for example, my lack of knowledge) I can't make it work with the modern way
-/*
 #Preview {
     let state = Activity<WalkingActivityAttributes>.ContentState(distanceWalked: 10, elapsedTime: Date().timeIntervalSince1970)
     return WalkingLiveActivityView(
@@ -57,4 +55,3 @@ struct WalkingActivityAttributes_Previews: PreviewProvider {
     )
     .previewContext(WidgetPreviewContext(family: .systemMedium))
 }
-*/

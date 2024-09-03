@@ -25,12 +25,10 @@ struct EmptyView: View {
     }
 }
 
-#Preview {
-    @State var walking = false
-    return EmptyView(isWalkActive: $walking)
+#Preview("Ready to start"){
+    EmptyView(isWalkActive: .constant(false))
 }
 
-#Preview {
-    @State var walking = true
-    return EmptyView(isWalkActive: $walking)
+#Preview("Started") {
+    EmptyView(isWalkActive: .constant(true))
 }

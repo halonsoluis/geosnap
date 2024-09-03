@@ -63,7 +63,7 @@ struct ImageWithOverlay: View {
     }
 }
 
-#Preview {
+#Preview("Image with overlay") {
     ImageWithOverlay(
         item: StoredPhoto(
             timestamp: Date(),
@@ -75,7 +75,7 @@ struct ImageWithOverlay: View {
     .previewDisplayName("with Overlay")
 }
 
-#Preview {
+#Preview("Image without overlay") {
     ImageWithOverlay(
         item: StoredPhoto(
             timestamp: Date(),
