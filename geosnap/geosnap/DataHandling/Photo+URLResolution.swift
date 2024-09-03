@@ -3,7 +3,7 @@
 
 import Foundation
 
-extension Photo {
+extension JsonPhoto {
     var url: URL? {
         let url = "https://farm\(farm).staticflickr.com/\(server)/\(id)_\(secret).jpg"
         return URL(string: url)

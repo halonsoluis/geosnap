@@ -4,8 +4,14 @@
 import Foundation
 import SwiftData
 
+struct Photo: Sendable {
+    let timestamp: Date
+    let url: String
+    let image: Data
+}
+
 struct ImageStorage {
-    static func downloadAndCreateImageItem(from urlString: String) async throws -> StoredPhoto {
+    static func downloadAndCreateImageItem(from urlString: String) async throws -> Photo {
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
@@ -13,10 +19,10 @@ struct ImageStorage {
         let (data, _) = try await URLSession.shared.data(from: url)
         let newItem = StoredPhoto(timestamp: Date(), url: urlString, image: data)
 
-        return newItem
+        return Photo(timestamp: newItem.timestamp, url: newItem.url, image: newItem.image)
     }
 
-    static func saveImage(newItem: StoredPhoto, context: ModelContext) throws {
+    static func saveImage(newItem: Photo, context: ModelContext) throws {
 
         let allItems = try allItems(context: context)
 
@@ -25,7 +31,9 @@ struct ImageStorage {
             return
         }
 
-        context.insert(newItem)
+        context.insert(
+            StoredPhoto(timestamp: newItem.timestamp, url: newItem.url, image: newItem.image)
+        )
 
         try context.save()
     }

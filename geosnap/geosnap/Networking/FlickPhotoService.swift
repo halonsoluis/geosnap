@@ -26,7 +26,7 @@ class FlickrPhotoService: PhotoService {
         imageURL?(url.absoluteString)
     }
 
-    func fetchPhotoWithReturn(latitude: Double, longitude: Double) async throws -> Photo {
+    func fetchPhotoWithReturn(latitude: Double, longitude: Double) async throws -> JsonPhoto {
         guard let apiKey else {
             throw PhotoError.withFlickrError(FlickrFailResponse(code: 100, message: "API key not present"))
         }

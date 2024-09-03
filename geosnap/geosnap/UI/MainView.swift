@@ -13,7 +13,7 @@ struct MainView: View {
         sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
     )) private var items: [StoredPhoto]
 
-    let locationManager: LocationTracking
+    let locationManager: any LocationTracking
     @ObservedObject var errorHandling: ErrorHandling
 
     var body: some View {

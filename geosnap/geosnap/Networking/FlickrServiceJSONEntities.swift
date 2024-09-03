@@ -12,7 +12,7 @@ struct FlickrResponse: Decodable {
 }
 
 struct FlickrPhotoResponse: Decodable {
-    let photos: Photos
+    let photos: JsonPhotos
 }
 
 struct FlickrFailResponse: Decodable {
@@ -26,16 +26,16 @@ struct FlickrFailResponse: Decodable {
 
 
 // Will use only what is needed for a very simple MVP, loading only 1 foto if available
-struct Photos: Decodable {
+struct JsonPhotos: Decodable {
     //   let page: Int
     //   let pages: Int
     //   let perpage: Int
     //   let total: String
-    let photo: [Photo]
+    let photo: [JsonPhoto]
 }
 
 // Only parse what is relevant as for this MVP
-struct Photo: Decodable {
+struct JsonPhoto: Decodable {
     let id: String
     //  let owner: String
     let secret: String

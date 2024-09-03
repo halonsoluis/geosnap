@@ -16,9 +16,9 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
     private let distanceThreshold: Double = 100.0  // 100 meters
     private var lastLocation: CLLocation?
     private var activated = false
-    private let locationDelegate: LocationManagerDelegate
+    private let locationDelegate: any LocationManagerDelegate
 
-    init(delegate locationDelegate: LocationManagerDelegate) {
+    init(delegate locationDelegate: any LocationManagerDelegate) {
         self.locationDelegate = locationDelegate
         super.init()
         locationManager.delegate = self

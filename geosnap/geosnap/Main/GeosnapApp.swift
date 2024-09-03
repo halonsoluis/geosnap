@@ -15,8 +15,8 @@ struct GeosnapApp: App {
         }
     }()
 
-    let locationManager: LocationTracking
-    let photoService: PhotoService
+    let locationManager: any LocationTracking
+    let photoService: any PhotoService
     let errorHandling: ErrorHandling
 
     init() {

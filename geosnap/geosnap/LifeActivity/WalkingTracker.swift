@@ -2,15 +2,15 @@
 // Using Swift 5.0
 
 import SwiftUI
-import ActivityKit
+@preconcurrency import ActivityKit
 
-class WalkingTracker: ObservableObject, LocationTracking {
+final class WalkingTracker: ObservableObject, LocationTracking, Sendable {
     @Published var distanceWalked: Double = 0.0
     @Published var elapsedTime: TimeInterval = 0.0
     private var activity: Activity<WalkingActivityAttributes>? = nil
     private var timer: Timer? = nil
 
-    func startTracking() {
+    @MainActor func startTracking() {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             startWalkingActivity()
             startTimer()
@@ -22,12 +22,14 @@ class WalkingTracker: ObservableObject, LocationTracking {
         stopWalkingActivity()
     }
 
+    @MainActor // Ensure that this function and related properties are used on the main thread
     private func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            self.elapsedTime += 1.0
-           // self.distanceWalked = ?? // TODO: Gather information
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
 
+            self.elapsedTime += 1.0
             self.updateWalkingActivity()
+            // self.distanceWalked = ?? // TODO: Gather information
         }
     }
 

@@ -4,7 +4,7 @@
 import Foundation
 
 class ErrorHandlingPhotoService: ErrorHandling, PhotoService {
-    let primaryPhotoService: PhotoService
+    let primaryPhotoService: any PhotoService
 
     var imageURL: ((String) -> Void)? {
         didSet {
@@ -12,7 +12,7 @@ class ErrorHandlingPhotoService: ErrorHandling, PhotoService {
         }
     }
 
-    init(primaryPhotoService: PhotoService) {
+    init(primaryPhotoService: any PhotoService) {
         self.primaryPhotoService = primaryPhotoService
     }
 

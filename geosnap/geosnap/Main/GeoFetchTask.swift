@@ -8,23 +8,23 @@ class GeoFetchTask: LocationManagerDelegate {
 
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
-    let photoService: PhotoService
+    let photoService: any PhotoService
 
-    init(photoService: PhotoService) {
+    init(photoService: any PhotoService) {
         self.photoService = photoService
     }
 
     // Begin a background task
     private func beginBackgroundTask() {
         if backgroundTask == .invalid {
-            backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "FetchPhotos") {
-                self.endBackgroundTask()
+            backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "FetchPhotos") { [weak self] in
+                self?.endBackgroundTask()
             }
         }
     }
 
     // End the background task
-    private func endBackgroundTask() {
+    @MainActor private func endBackgroundTask() {
         if backgroundTask != .invalid {
             UIApplication.shared.endBackgroundTask(backgroundTask)
             backgroundTask = .invalid
@@ -36,10 +36,10 @@ class GeoFetchTask: LocationManagerDelegate {
             do {
                 beginBackgroundTask()
                 try await photoService.fetchPhoto(latitude: latitude, longitude: longitude)
-                endBackgroundTask()
+                await endBackgroundTask()
             } catch {
                 print("Failed to fetch photos: \(error)")
-                endBackgroundTask()
+                await endBackgroundTask()
             }
 
         }

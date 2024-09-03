@@ -59,6 +59,7 @@ struct ImageWithOverlay: View {
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "d/M/yy h:mm a"
+
         return formatter.string(from: date)
     }
 }

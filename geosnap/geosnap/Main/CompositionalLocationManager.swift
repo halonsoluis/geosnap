@@ -5,7 +5,7 @@ import Foundation
 
 struct CompositionalLocationManager: LocationTracking {
 
-    let locationService: [LocationTracking]
+    let locationService: [any LocationTracking]
 
     func startTracking() {
         locationService.forEach { $0.startTracking() }
