@@ -23,7 +23,9 @@ struct GeosnapApp: App {
         let photoService = FlickrPhotoService()
         let errorHandling = ErrorHandlingPhotoService(primaryPhotoService: photoService)
         let walkingTracker = WalkingTracker()
-        let locationManager = LocationManager(photoService: errorHandling)
+        let locationManager = LocationManager(
+            delegate: GeoFetchTask(photoService: errorHandling)
+        )
 
         self.photoService = errorHandling
         self.errorHandling = errorHandling

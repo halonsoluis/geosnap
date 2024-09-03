@@ -6,20 +6,20 @@ import CoreLocation
 import SwiftData
 import UIKit
 
+protocol LocationManagerDelegate {
+    func didUpdateLocation(latitude: Double, longitude: Double)
+}
+
 class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
     private let distanceThreshold: Double = 100.0  // 100 meters
-
     private var lastLocation: CLLocation?
-    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
-
-    let photoService: PhotoService
-
     private var activated = false
+    private let locationDelegate: LocationManagerDelegate
 
-    init(photoService: PhotoService) {
-        self.photoService = photoService
+    init(delegate locationDelegate: LocationManagerDelegate) {
+        self.locationDelegate = locationDelegate
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -41,48 +41,21 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
         if let lastLocation = lastLocation {
             let distance = newLocation.distance(from: lastLocation)
             if distance >= distanceThreshold {
-                fetchPhotosForLocation(newLocation)
+                reportLocation(newLocation)
                 self.lastLocation = newLocation
             }
         } else {
             lastLocation = newLocation
-            fetchPhotosForLocation(newLocation)
+            reportLocation(newLocation)
         }
     }
 
-    private func fetchPhotosForLocation(_ location: CLLocation) {
+    private func reportLocation(_ location: CLLocation) {
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
 
-        Task {
-            do {
-                beginBackgroundTask()
-                try await photoService.fetchPhoto(latitude: latitude, longitude: longitude)
-                endBackgroundTask()
-            } catch {
-                print("Failed to fetch photos: \(error)")
-                lastLocation = nil
-                endBackgroundTask()
-            }
-
-        }
-    }
-
-    // Begin a background task
-    private func beginBackgroundTask() {
-        if backgroundTask == .invalid {
-            backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "FetchPhotos") {
-                self.endBackgroundTask()
-            }
-        }
-    }
-
-    // End the background task
-    private func endBackgroundTask() {
-        if backgroundTask != .invalid {
-            UIApplication.shared.endBackgroundTask(backgroundTask)
-            backgroundTask = .invalid
-        }
+        locationDelegate
+            .didUpdateLocation(latitude: latitude, longitude: longitude)
     }
 
     //MARK: - Location Tracking
@@ -104,7 +77,5 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         locationManager.showsBackgroundLocationIndicator = false
         locationManager.allowsBackgroundLocationUpdates = false
-
-        endBackgroundTask()
     }
 }
