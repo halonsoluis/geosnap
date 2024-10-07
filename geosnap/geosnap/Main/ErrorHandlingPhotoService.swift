@@ -3,7 +3,7 @@
 
 import Foundation
 
-class ErrorHandlingPhotoService: ErrorHandling, PhotoService {
+final class ErrorHandlingPhotoService: ErrorHandling, PhotoService {
     let primaryPhotoService: any PhotoService
 
     var imageURL: ((String) -> Void)? {
@@ -16,7 +16,7 @@ class ErrorHandlingPhotoService: ErrorHandling, PhotoService {
         self.primaryPhotoService = primaryPhotoService
     }
 
-    @MainActor
+    
     func fetchPhoto(latitude: Double, longitude: Double) async throws {
         do {
             try await primaryPhotoService.fetchPhoto(latitude: latitude, longitude: longitude)

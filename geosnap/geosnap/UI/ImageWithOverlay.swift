@@ -73,7 +73,6 @@ struct ImageWithOverlay: View {
         ),
         withOverlay: true
     )
-    .previewDisplayName("with Overlay")
 }
 
 #Preview("Image without overlay") {
@@ -85,5 +84,4 @@ struct ImageWithOverlay: View {
         ),
         withOverlay: false
     )
-    .previewDisplayName("without Overlay")
 }

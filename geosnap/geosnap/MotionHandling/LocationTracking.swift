@@ -3,6 +3,7 @@
 
 import Foundation
 
+@MainActor
 protocol LocationTracking {
     func startTracking()
     func stopTracking()

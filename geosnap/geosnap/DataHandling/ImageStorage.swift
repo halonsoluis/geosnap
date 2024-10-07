@@ -4,7 +4,7 @@
 import Foundation
 import SwiftData
 
-struct Photo: Sendable {
+struct Photo {
     let timestamp: Date
     let url: String
     let image: Data

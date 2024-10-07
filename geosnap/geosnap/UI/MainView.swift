@@ -14,7 +14,7 @@ struct MainView: View {
     )) private var items: [StoredPhoto]
 
     let locationManager: any LocationTracking
-    @ObservedObject var errorHandling: ErrorHandling
+    var errorHandling: ErrorHandling
 
     var body: some View {
         ZStack {
@@ -90,18 +90,20 @@ struct MainView: View {
 
 }
 
-#Preview {
-
-    struct MockLocationManager: LocationTracking {
-        func startTracking() {
-            print("Start tracking")
-        }
-
-        func stopTracking() {
-            print("Stop tracking")
-        }
+private struct MockLocationManager: LocationTracking {
+    func startTracking() {
+        print("Start tracking")
     }
 
-    return MainView(locationManager: MockLocationManager(), errorHandling: ErrorHandling())
+    func stopTracking() {
+        print("Stop tracking")
+    }
+}
+
+private class MockErrorHandling: ErrorHandling {
+}
+
+#Preview {
+    MainView(locationManager: MockLocationManager(), errorHandling: MockErrorHandling())
         .modelContainer(for: StoredPhoto.self, inMemory: true)
 }

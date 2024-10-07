@@ -7,7 +7,7 @@ import Foundation
 // https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=6a704fa13e809d5b0e65010950af64d2&content_types=0&media=photos&has_geo=1&lat=23.1023342&lon=-82.3917388&radius=0.1&radius_units=km&per_page=1&page=1&format=json&nojsoncallback=1
 
 
-class FlickrPhotoService: PhotoService {
+final class FlickrPhotoService: PhotoService {
 
     var imageURL: ((String) -> Void)?
 

@@ -3,7 +3,8 @@
 
 import Foundation
 
-class ErrorHandling: ObservableObject {
-    @Published var errorMessage: String = ""
-    @Published var shouldHandleInvalidKey = false
+@Observable
+class ErrorHandling: NSObject, ObservableObject {
+    var errorMessage: String = ""
+    var shouldHandleInvalidKey: Bool = false
 }

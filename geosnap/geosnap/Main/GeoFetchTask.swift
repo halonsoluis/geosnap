@@ -4,21 +4,23 @@
 import Foundation
 import UIKit
 
+@MainActor
 class GeoFetchTask: LocationManagerDelegate {
 
     private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
-    let photoService: any PhotoService
+    let fetchPhoto: @Sendable (Double, Double) async throws -> Void
 
-    init(photoService: any PhotoService) {
-        self.photoService = photoService
+    init(photoService: @Sendable @escaping (Double, Double) async throws -> Void) {
+        self.fetchPhoto = photoService
     }
 
     // Begin a background task
-    private func beginBackgroundTask() {
+     private func beginBackgroundTask() {
         if backgroundTask == .invalid {
             backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "FetchPhotos") { [weak self] in
-                self?.endBackgroundTask()
+                guard let self = self else { return }
+                self.endBackgroundTask()
             }
         }
     }
@@ -31,11 +33,11 @@ class GeoFetchTask: LocationManagerDelegate {
         }
     }
 
-    func didUpdateLocation(latitude: Double, longitude: Double) {
+    nonisolated func didUpdateLocation(latitude: Double, longitude: Double) {
         Task {
             do {
-                beginBackgroundTask()
-                try await photoService.fetchPhoto(latitude: latitude, longitude: longitude)
+                await beginBackgroundTask()
+                try await fetchPhoto(latitude, longitude)
                 await endBackgroundTask()
             } catch {
                 print("Failed to fetch photos: \(error)")

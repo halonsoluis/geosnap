@@ -10,6 +10,7 @@ protocol LocationManagerDelegate {
     func didUpdateLocation(latitude: Double, longitude: Double)
 }
 
+@MainActor
 class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
@@ -26,27 +27,32 @@ class LocationManager: NSObject, LocationTracking, CLLocationManagerDelegate {
         locationManager.distanceFilter = distanceThreshold
     }
 
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+
+    nonisolated func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status = manager.authorizationStatus
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            if activated {
-                startTracking()
+            MainActor.assumeIsolated {
+                if activated {
+                    startTracking()
+                }
             }
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    nonisolated func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
-
-        if let lastLocation = lastLocation {
-            let distance = newLocation.distance(from: lastLocation)
-            if distance >= distanceThreshold {
+        
+        MainActor.assumeIsolated {
+            if let lastLocation = lastLocation {
+                let distance = newLocation.distance(from: lastLocation)
+                if distance >= distanceThreshold {
+                    reportLocation(newLocation)
+                    self.lastLocation = newLocation
+                }
+            } else {
+                lastLocation = newLocation
                 reportLocation(newLocation)
-                self.lastLocation = newLocation
             }
-        } else {
-            lastLocation = newLocation
-            reportLocation(newLocation)
         }
     }
 

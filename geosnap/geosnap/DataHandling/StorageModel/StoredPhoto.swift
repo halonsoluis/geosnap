@@ -7,12 +7,12 @@ import SwiftData
 @Model
 final class StoredPhoto {
     @Attribute(.unique)
-    let timestamp: Date
+    var timestamp: Date
 
     @Attribute(.unique)
-    let url: String
+    var url: String
 
-    let image: Data
+    var image: Data
 
     init(timestamp: Date, url: String, image: Data) {
         self.timestamp = timestamp

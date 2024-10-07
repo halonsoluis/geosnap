@@ -22,9 +22,12 @@ struct GeosnapApp: App {
     init() {
         let photoService = FlickrPhotoService()
         let errorHandling = ErrorHandlingPhotoService(primaryPhotoService: photoService)
+
+        let photoFetch = errorHandling.fetchPhoto
         let walkingTracker = WalkingTracker()
         let locationManager = LocationManager(
-            delegate: GeoFetchTask(photoService: errorHandling)
+            delegate:
+                GeoFetchTask(photoService: photoFetch)
         )
 
         self.photoService = errorHandling
@@ -36,7 +39,7 @@ struct GeosnapApp: App {
         // Want to skip the queue and set an API Key so that you don't have to fill it manually on the simulator.
         // Do it here below
         // -----------------
-        // UserDefaults.standard.setValue("YOUR_API_KEY", forKey: "apiKey")
+        UserDefaults.standard.setValue("9e3ca9a5af86c43f4e3033b7cc401a35", forKey: "apiKey")
     }
 
     var body: some Scene {

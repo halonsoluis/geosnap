@@ -4,13 +4,14 @@
 import SwiftUI
 @preconcurrency import ActivityKit
 
+@MainActor
 final class WalkingTracker: ObservableObject, LocationTracking, Sendable {
     @Published var distanceWalked: Double = 0.0
     @Published var elapsedTime: TimeInterval = 0.0
     private var activity: Activity<WalkingActivityAttributes>? = nil
-    private var timer: Timer? = nil
+    private var timerTask: Task<Void, any Error>? = nil
 
-    @MainActor func startTracking() {
+     func startTracking() {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             startWalkingActivity()
             startTimer()
@@ -22,20 +23,24 @@ final class WalkingTracker: ObservableObject, LocationTracking, Sendable {
         stopWalkingActivity()
     }
 
-    @MainActor // Ensure that this function and related properties are used on the main thread
     private func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-
-            self.elapsedTime += 1.0
-            self.updateWalkingActivity()
-            // self.distanceWalked = ?? // TODO: Gather information
+        timerTask = Task(priority: .userInitiated) { [weak self] in
+            while !Task.isCancelled {
+                try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+                self?.updateTimer()
+            }
         }
     }
 
+    private func updateTimer() {
+        elapsedTime += 1.0
+        updateWalkingActivity()
+        // self.distanceWalked = ?? // TODO: Gather information
+    }
+
     private func stopTimer() {
-        timer?.invalidate()
-        timer = nil
+        timerTask?.cancel()
+        timerTask = nil
     }
 
     private func startWalkingActivity() {
